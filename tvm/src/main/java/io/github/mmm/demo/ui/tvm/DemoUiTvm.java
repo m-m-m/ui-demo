@@ -8,15 +8,14 @@ import io.github.mmm.ui.tvm.TvmContext;
  */
 public class DemoUiTvm {
 
+  /**
+   * @param args the command-line arguments. Actually not really used by TeaVM.
+   */
   public static void main(String[] args) {
 
     TvmContext context = new TvmContext();
     DemoUi app = new DemoUi(context);
     app.run();
-    // UiMainWindow browser = context.getMainWindow();
-    // browser.addChild(context.createButton("Click me!", (e) -> Window.alert("Hello World!")));
-    // browser.addChild(context.createTextInput("Name"));
-    // browser.addChild(context.createCheckbox("Check me"));
   }
 
 }

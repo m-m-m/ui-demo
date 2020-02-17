@@ -1,7 +1,7 @@
 :root {
   --ui-color-bg: #FFFFFF;
   --ui-color-text: #000000;
-  --ui-color-focus: #0000FF;
+  --ui-color-focus: #0000FF80;
   --ui-color-hero: #00FF00;
   --ui-color-border: #777777;
   --ui-color-button: linear-gradient(#FAFAFA, #EEEEEE);
