@@ -1,0 +1,62 @@
+body {
+  background: var(--ui-color-bg);
+  color: var(--ui-color-text);
+}
+button {
+  background: var(--ui-color-button);
+  border-color: var(--ui-color-border);
+}
+button:focus {
+  outline: none;
+  border-color: var(--ui-color-focus);
+}
+button.hero {
+  background: var(--ui-color-hero);
+}
+form {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+fieldset {
+  display: contents;
+}
+legend {
+  grid-column: 1 / 3;
+  text-align: center;
+}
+ui-vpanel {
+  display: flex;
+  flex-direction: column;
+}
+ui-hpanel {
+  display: flex;
+  flex-direction: row;
+}
+*[aria-hidden=true], .hidden {
+  display:none;
+}
+ui-tabs {
+	display: inline-flex;
+}
+ui-tabs button {
+  padding: 0.5em 0.5em;
+  border: solid;
+  border-radius: 0.5em 0.5em 0 0;
+  border-width: 1px;
+  border-color: var(--ui-color-border);
+  cursor: pointer;
+  text-overflow: ellipsis;
+  /* background: var(--ui-color-tab); */
+}
+ui-tabs button[aria-selected="true"] {
+  font-weight: bold;
+  border-width: 1px 1px 0 1px;
+  background: var(--ui-color-active);
+}
+ui-tabpanel section {
+  border: solid;
+  border-width: 0 1px 1px 1px;
+  border-color: var(--ui-color-border);
+  background: var(--ui-color-active);
+  padding: 0.5em;
+}
