@@ -1,0 +1,17 @@
+:root {
+  --bg: #FFFFFF;
+  --text: #000000;
+  --focus: #2080FF80;
+  --hover: #2080FF80;
+  --invalid: #FF0000;
+  --danger: #FF0000;
+  --error: #FF0000;
+  --warning: #C0C000;
+  --info: #2070D0;
+  --submit: #00FF00;
+  --abort: #0000FF;
+  --border: #777777;
+  --button: linear-gradient(#FAFAFA, #EEEEEE);
+  --tab: linear-gradient(#DDDDDD, #777777);
+  --active: #F7F7FF;
+}

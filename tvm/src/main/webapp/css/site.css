@@ -1,0 +1,134 @@
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+textarea {
+  resize: vertical;
+  /* workaround for right alignment in FF */
+  padding-right: 2px;
+  min-height: 2em;
+  max-height: 20em;
+}
+button {
+  background: var(--button);
+  border-color: var(--border);
+  width: max-content;
+  min-width: 6em;
+}
+:focus {
+  outline: none;
+  box-shadow: 0 0 1em var(--focus);
+  border-color: var(--focus);
+}
+::-moz-focus-inner {
+  border-style: none;
+}
+:invalid, .invalid {
+  border-color: var(--invalid);
+}
+.error:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: var(--error);
+  content: '\f057';
+}
+.warning:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: var(--warning);
+  content: '\f071';
+}
+.info:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: var(--info);
+  content: '\f05a';
+}
+.question:before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  color: var(--info);
+  content: '\f059';
+}
+.danger {
+  background: var(--danger);
+}
+.submit {
+  background: var(--submit);
+}
+.abort {
+  background: var(--abort);
+}
+fieldset > label, form > label {
+  clear: both;
+  float: left;
+  width: 18%;
+  text-align: right;
+  font-weight: bold;
+  white-space: nowrap;
+}
+fieldset>label {
+  margin-right: 0.5em;
+  padding-top: 0.1em;
+}
+form>label {
+  margin-left: 0.75em;
+  margin-right: 0.5em;
+  padding-top: 0.1em;
+}
+fieldset>label:after,
+form>label:after {
+  content: ':';
+}
+fieldset>label.mandatory:after,
+form>label.mandatory:after {
+  content: '*:';
+}
+fieldset>:not(label):not(legend) {
+  min-width: 72%;
+  width: 72%;
+  margin-bottom: 0.5em;
+  display: block;
+}
+form>:not(label):not(fieldset) {
+  min-width: 70%;
+  width: 70%;
+  margin-bottom: 0.5em;
+  display: block;
+}
+ui-vpanel {
+  display: flex;
+  flex-direction: column;
+}
+ui-hpanel {
+  display: flex;
+  flex-direction: row;
+}
+*[aria-hidden=true], .hidden {
+  display:none;
+}
+ui-tabs {
+	display: inline-flex;
+}
+ui-tabs button {
+  padding: 0.5em 0.5em;
+  border: solid;
+  border-radius: 0.5em 0.5em 0 0;
+  border-width: 1px;
+  border-color: var(--border);
+  cursor: pointer;
+  text-overflow: ellipsis;
+  background: var(--tab);
+}
+ui-tabs button[aria-selected='true'] {
+  font-weight: bold;
+  border-bottom-width: 0;
+  background: var(--active);
+}
+ui-tabpanel section {
+  border: solid;
+  border-width: 0 1px 1px 1px;
+  border-color: var(--border);
+  background: var(--active);
+  padding: 0.5em;
+}

@@ -70,16 +70,21 @@ public class DemoUi {
       tab3.setVisible(showTab3.isSelected());
     };
     showTab3.addListener(showTab3Listener);
-    UiTextInput textInput = this.context.createTextInput("Login:");
-    UiPasswordInput passwordInput = this.context.createPasswordInput("Password:");
-    UiTextArea textArea = this.context.createTextArea("Comment:");
-    UiRadioChoice<TimeUnit> choice = this.context.createRadioChoiceByEnum("Time-unit:", TimeUnit.class);
+    UiTextInput textInput = this.context.createTextInput("Login");
+    textInput.setValidator(ValidatorMandatory.getInstance());
+    UiPasswordInput passwordInput = this.context.createPasswordInput("Password");
+    UiTextArea textArea = this.context.createTextArea("Comment");
+    UiRadioChoice<TimeUnit> choice = this.context.createRadioChoiceByEnum("Time-unit", TimeUnit.class);
     UiFormGroup formGroupTabs = this.context.createFormGroup("Show Tabs", showTab1, showTab3);
     UiFormGroup formGroupInputs = this.context.createFormGroup("Generic Inputs", textInput, passwordInput, textArea,
         choice);
 
     UiFormPanel formPanel = this.context.createFormPanel(formGroupTabs, formGroupInputs);
     page2.addChild(formPanel);
+
+    page2.addChild(this.context.createButton("Submit", (e) -> {
+      formPanel.validate();
+    }));
     mainWindow.addChild(tabPanel);
     mainWindow.setVisible(true);
   }
