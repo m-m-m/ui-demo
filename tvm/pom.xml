@@ -79,7 +79,7 @@
               <debugInformationGenerated>true</debugInformationGenerated>
               <sourceMapsGenerated>true</sourceMapsGenerated>
               <sourceFilesCopied>true</sourceFilesCopied>
-              <!--optimizationLevel>SIMPLE</optimizationLevel-->
+              <optimizationLevel>SIMPLE</optimizationLevel>
             </configuration>
           </execution>
         </executions>

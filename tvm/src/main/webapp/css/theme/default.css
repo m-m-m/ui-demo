@@ -1,17 +1,28 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * You may explicitly copy and modify this stylesheet and include it into your project. */
 :root {
-  --bg: #FFFFFF;
-  --text: #000000;
-  --focus: #2080FF80;
-  --hover: #2080FF80;
-  --invalid: #FF0000;
-  --danger: #FF0000;
-  --error: #FF0000;
-  --warning: #C0C000;
-  --info: #2070D0;
-  --submit: #00FF00;
-  --abort: #0000FF;
-  --border: #777777;
-  --button: linear-gradient(#FAFAFA, #EEEEEE);
-  --tab: linear-gradient(#DDDDDD, #777777);
-  --active: #F7F7FF;
+  --col-bg: #FFFFFF;
+  --col-text: #000000;
+  --col-focus: #2080FF80;
+  --col-hover: #2080FF80;
+  --col-invalid: #FF0000;
+  --col-error: #FF0000;
+  --col-warning: #C0C000;
+  --col-info: #2070D0;
+  --col-danger: #F06040;
+  --col-submit: #60FF60;
+  --col-abort: #E0E0E0;
+  --col-border: #777777;
+  --col-button: linear-gradient(#FAFAFA, #EEEEEE);
+  --col-tab: linear-gradient(#DDDDDD, #777777);
+  --col-active: #F7F7FF;
+  --ico-error: '\f057';
+  --ico-warning: '\f071';
+  --ico-info: '\f05a';
+  --ico-question: '\f059';
+  --ico-expand: '\f0fe';
+  --ico-collapse: '\f146';
+  --radius: 0.5em;
+  --font: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }

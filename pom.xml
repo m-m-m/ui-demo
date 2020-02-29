@@ -55,12 +55,12 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-ui-fx</artifactId>
+        <artifactId>mmm-ui-fx-all</artifactId>
         <version>1.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-ui-tvm</artifactId>
+        <artifactId>mmm-ui-tvm-all</artifactId>
         <version>1.0.0-SNAPSHOT</version>
       </dependency>
       <dependency>

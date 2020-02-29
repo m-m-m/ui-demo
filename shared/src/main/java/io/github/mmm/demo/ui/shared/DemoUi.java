@@ -4,15 +4,26 @@ package io.github.mmm.demo.ui.shared;
 
 import java.util.concurrent.TimeUnit;
 
+import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.UiContext;
+import io.github.mmm.ui.datatype.chart.UiDataSet;
+import io.github.mmm.ui.datatype.media.UiMedia;
+import io.github.mmm.ui.datatype.media.UiMediaSource;
+import io.github.mmm.ui.datatype.media.UiMediaTrack;
 import io.github.mmm.ui.event.UiValueChangeEventListener;
+import io.github.mmm.ui.widget.attribute.UiWidgetWithAutocomplete;
+import io.github.mmm.ui.widget.button.UiButton;
+import io.github.mmm.ui.widget.chart.UiPieChart;
 import io.github.mmm.ui.widget.composite.UiTab;
 import io.github.mmm.ui.widget.input.UiCheckbox;
 import io.github.mmm.ui.widget.input.UiPasswordInput;
 import io.github.mmm.ui.widget.input.UiRadioChoice;
 import io.github.mmm.ui.widget.input.UiTextArea;
 import io.github.mmm.ui.widget.input.UiTextInput;
+import io.github.mmm.ui.widget.media.UiMediaPlayer;
 import io.github.mmm.ui.widget.menu.UiMenu;
+import io.github.mmm.ui.widget.menu.UiMenuBar;
+import io.github.mmm.ui.widget.panel.UiButtonPanel;
 import io.github.mmm.ui.widget.panel.UiFormGroup;
 import io.github.mmm.ui.widget.panel.UiFormPanel;
 import io.github.mmm.ui.widget.panel.UiTabPanel;
@@ -38,10 +49,7 @@ public class DemoUi {
   public void run() {
 
     UiMainWindow mainWindow = this.context.getMainWindow();
-    UiMenu fileMenu = mainWindow.getMenuBar().addMenu("File");
-    fileMenu.addMenuItem("Exit", (e) -> {
-      mainWindow.setVisible(false);
-    });
+    initMenuBar(mainWindow);
     UiTabPanel tabPanel = this.context.createTabPanel();
     UiVerticalPanel page1 = this.context.createVerticalPanel();
     UiTab tab1 = tabPanel.addChild(page1, "Tab1");
@@ -73,20 +81,82 @@ public class DemoUi {
     UiTextInput textInput = this.context.createTextInput("Login");
     textInput.setValidator(ValidatorMandatory.getInstance());
     UiPasswordInput passwordInput = this.context.createPasswordInput("Password");
+    passwordInput.setAutocomplete(UiWidgetWithAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
+    UiPasswordInput confirmPasswordInput;
+    // confirmPasswordInput = passwordInput.createConfirmationInput();
+    confirmPasswordInput = this.context.createPasswordInput("Confirm " + passwordInput.getName());
+    confirmPasswordInput.setValidator(new ValidatorPasswordConfirmation(() -> passwordInput.getValue()));
+    confirmPasswordInput.setAutocomplete(UiWidgetWithAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
+
     UiTextArea textArea = this.context.createTextArea("Comment");
     UiRadioChoice<TimeUnit> choice = this.context.createRadioChoiceByEnum("Time-unit", TimeUnit.class);
     UiFormGroup formGroupTabs = this.context.createFormGroup("Show Tabs", showTab1, showTab3);
-    UiFormGroup formGroupInputs = this.context.createFormGroup("Generic Inputs", textInput, passwordInput, textArea,
-        choice);
+    UiFormGroup formGroupInputs = this.context.createFormGroup("Generic Inputs", textInput, passwordInput,
+        confirmPasswordInput, textArea, choice);
 
     UiFormPanel formPanel = this.context.createFormPanel(formGroupTabs, formGroupInputs);
     page2.addChild(formPanel);
-
-    page2.addChild(this.context.createButton("Submit", (e) -> {
+    UiButton submitButton = this.context.createButton("Submit", (e) -> {
       formPanel.validate();
-    }));
+    });
+    submitButton.getStyles().add("submit");
+    UiButton deleteButton = this.context.createButton("Delete", (e) -> {
+      System.out.println("Delete");
+    });
+    deleteButton.getStyles().add("danger");
+    UiButton cancelButton = this.context.createButton("Cancel", (e) -> {
+      System.out.println("Cancel");
+    });
+    cancelButton.getStyles().add("abort");
+    UiButtonPanel buttonPanel = this.context.createButtonPanel(submitButton, deleteButton, cancelButton);
+    page2.addChild(buttonPanel);
+    createChartTab(tabPanel);
+    createVideoTab(tabPanel);
     mainWindow.addChild(tabPanel);
     mainWindow.setVisible(true);
+  }
+
+  private void initMenuBar(UiMainWindow mainWindow) {
+
+    UiMenuBar menuBar = mainWindow.getMenuBar();
+    UiMenu fileMenu = menuBar.addMenu("File");
+    fileMenu.addMenuItem("Exit", (e) -> {
+      mainWindow.setVisible(false);
+    });
+    UiMenu optionsMenu = menuBar.addMenu("Options");
+    optionsMenu.addMenuItem("Theme", (e) -> {
+      System.out.println("Selected Theme from Options menu");
+    });
+  }
+
+  private static void createChartTab(UiTabPanel tabPanel) {
+
+    UiContext context = tabPanel.getContext();
+    UiPieChart chart = context.create(UiPieChart.class);
+    chart.setTitle("Demo Chart");
+    chart.setLegendPlacement(Direction.RIGHT);
+    chart.setData(UiDataSet.of("AWT", 1), UiDataSet.of("Swing", 5), UiDataSet.of("SWT/Eclipse", 4),
+        UiDataSet.of("JavaFx", 5), UiDataSet.of("JSF", 3), UiDataSet.of("GWT", 1), UiDataSet.of("AngularJS", 2),
+        UiDataSet.of("Angular", 5), UiDataSet.of("React", 3), UiDataSet.of("Vue", 2), UiDataSet.of("Ionic", 2),
+        UiDataSet.of("Android", 6), UiDataSet.of("iOS", 4));
+    UiTab tab = tabPanel.addChild(chart, "Chart");
+  }
+
+  private static void createVideoTab(UiTabPanel tabPanel) {
+
+    UiContext context = tabPanel.getContext();
+    UiVerticalPanel page = context.createVerticalPanel();
+    UiMediaPlayer player = context.create(UiMediaPlayer.class);
+    UiMediaSource sourceLq = new UiMediaSource("https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4",
+        UiMediaSource.MIMETYPE_VIDEO_MP4);
+    UiMediaSource sourceHq = new UiMediaSource(
+        "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4", UiMediaSource.MIMETYPE_VIDEO_MP4);
+    UiMediaTrack track = new UiMediaTrack("https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt",
+        UiMediaTrack.KIND_CAPTIONS, "en", "English");
+    player.setMedia(UiMedia.ofVideo(new UiMediaSource[] { sourceLq, sourceHq }, new UiMediaTrack[] { track },
+        "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg"));
+    page.addChild(player);
+    UiTab tab = tabPanel.addChild(page, "Video");
   }
 
 }

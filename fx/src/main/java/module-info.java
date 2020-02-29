@@ -7,7 +7,7 @@
  */
 module io.github.mmm.demo.ui.fx {
 
-  requires transitive io.github.mmm.ui.fx;
+  requires transitive io.github.mmm.ui.fx.all;
 
   requires transitive io.github.mmm.demo.ui.shared;
 

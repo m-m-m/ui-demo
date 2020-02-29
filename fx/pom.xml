@@ -17,7 +17,7 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-ui-fx</artifactId>
+      <artifactId>mmm-ui-fx-all</artifactId>
     </dependency>
   </dependencies>
 </project>

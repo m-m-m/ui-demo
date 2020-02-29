@@ -1,65 +1,89 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * You may explicitly copy and modify this stylesheet and include it into your project. */
 body {
-  background: var(--bg);
-  color: var(--text);
+  font-family: var(--font);
+  background: var(--col-bg);
+  color: var(--col-text);
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
 }
 textarea {
   resize: vertical;
   /* workaround for right alignment in FF */
-  padding-right: 2px;
+  /* padding-right: 2px; */
   min-height: 2em;
   max-height: 20em;
 }
 button {
-  background: var(--button);
-  border-color: var(--border);
+  background: var(--col-button);
+  border-color: var(--col-border);
   width: max-content;
   min-width: 6em;
+  font-size: inherit;
+  padding: 0.25em;
+}
+button[role=menuitem] {
+  border-radius: 0;
 }
 :focus {
   outline: none;
-  box-shadow: 0 0 1em var(--focus);
-  border-color: var(--focus);
+  box-shadow: 0 0 1em var(--col-focus);
+  border-color: var(--col-focus);
 }
 ::-moz-focus-inner {
   border-style: none;
 }
 :invalid, .invalid {
-  border-color: var(--invalid);
+  border-color: var(--col-invalid);
+}
+input, textarea, select, button {
+  border-radius: var(--radius);
+}
+ui-icon {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
 }
 .error:before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: var(--error);
-  content: '\f057';
+  color: var(--col-error);
+  content: var(--ico-error);
 }
 .warning:before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: var(--warning);
-  content: '\f071';
+  color: var(--col-warning);
+  content: var(--ico-warning);
 }
 .info:before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: var(--info);
-  content: '\f05a';
+  color: var(--col-info);
+  content: var(--ico-info);
 }
 .question:before {
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900;
-  color: var(--info);
-  content: '\f059';
+  color: var(--col-info);
+  content: var(--ico-question);
+}
+.expand:before {
+  content: var(--ico-expand);
+}
+.collapse:before {
+  content: var(--ico-collapse);
 }
 .danger {
-  background: var(--danger);
+  background: var(--col-danger);
 }
 .submit {
-  background: var(--submit);
+  background: var(--col-submit);
 }
 .abort {
-  background: var(--abort);
+  background: var(--col-abort);
 }
-fieldset > label, form > label {
+fieldset>label, form>label {
   clear: both;
   float: left;
   width: 18%;
@@ -86,7 +110,6 @@ form>label.mandatory:after {
 }
 fieldset>:not(label):not(legend) {
   min-width: 72%;
-  width: 72%;
   margin-bottom: 0.5em;
   display: block;
 }
@@ -104,31 +127,57 @@ ui-hpanel {
   display: flex;
   flex-direction: row;
 }
-*[aria-hidden=true], .hidden {
+ui-buttons {
+  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+ui-buttons>* {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+ui-radio {
+  margin-right: 0.5em;
+}
+ui-radio>input[type=radio] {
+    vertical-align: middle;
+    margin-top: -0.4em;
+    margin-right: 0.2em;
+}
+fieldset.collapsible>legend,
+fieldset.collapsible>legend>* {
+  cursor: pointer;
+}
+legend>*, ui-tabs>button>* {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+*[aria-hidden=true], .hidden, fieldset.collapsed>:not(legend) {
   display:none;
 }
 ui-tabs {
 	display: inline-flex;
 }
-ui-tabs button {
-  padding: 0.5em 0.5em;
+ui-tabs>button {
+  padding: 0.2em;
   border: solid;
-  border-radius: 0.5em 0.5em 0 0;
+  border-radius: var(--radius) var(--radius) 0 0;
   border-width: 1px;
-  border-color: var(--border);
+  border-color: var(--col-border);
   cursor: pointer;
   text-overflow: ellipsis;
-  background: var(--tab);
+  background: var(--col-tab);
 }
-ui-tabs button[aria-selected='true'] {
+ui-tabs>button[aria-selected='true'] {
   font-weight: bold;
   border-bottom-width: 0;
-  background: var(--active);
+  background: var(--col-active);
 }
-ui-tabpanel section {
+ui-tabpanel>section {
   border: solid;
   border-width: 0 1px 1px 1px;
-  border-color: var(--border);
-  background: var(--active);
+  border-color: var(--col-border);
+  background: var(--col-active);
   padding: 0.5em;
 }
