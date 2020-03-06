@@ -7,7 +7,7 @@
  */
 module io.github.mmm.demo.ui.shared {
 
-  requires transitive io.github.mmm.ui;
+  requires transitive io.github.mmm.ui.binding;
 
   exports io.github.mmm.demo.ui.shared;
 

@@ -6,13 +6,17 @@ import java.util.concurrent.TimeUnit;
 
 import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.UiContext;
+import io.github.mmm.ui.binding.UiBinding;
+import io.github.mmm.ui.datatype.chart.UiDataSeriesDouble;
 import io.github.mmm.ui.datatype.chart.UiDataSet;
 import io.github.mmm.ui.datatype.media.UiMedia;
 import io.github.mmm.ui.datatype.media.UiMediaSource;
 import io.github.mmm.ui.datatype.media.UiMediaTrack;
 import io.github.mmm.ui.event.UiValueChangeEventListener;
+import io.github.mmm.ui.widget.UiLabel;
 import io.github.mmm.ui.widget.attribute.UiWidgetWithAutocomplete;
 import io.github.mmm.ui.widget.button.UiButton;
+import io.github.mmm.ui.widget.chart.UiBarChartHorizontal;
 import io.github.mmm.ui.widget.chart.UiPieChart;
 import io.github.mmm.ui.widget.composite.UiTab;
 import io.github.mmm.ui.widget.input.UiCheckbox;
@@ -33,6 +37,7 @@ import io.github.mmm.ui.widget.window.UiMainWindow;
 /**
  * Demo of portable User-Interface with {@code mmm-ui}.
  */
+@SuppressWarnings("unchecked")
 public class DemoUi {
 
   private final UiContext context;
@@ -48,22 +53,17 @@ public class DemoUi {
 
   public void run() {
 
+    UiBinding binding = new UiBinding(this.context);
     UiMainWindow mainWindow = this.context.getMainWindow();
     initMenuBar(mainWindow);
-    UiTabPanel tabPanel = this.context.createTabPanel();
-    UiVerticalPanel page1 = this.context.createVerticalPanel();
-    UiTab tab1 = tabPanel.addChild(page1, "Tab1");
-    page1.addChild(this.context.createLabel("Hello World"));
-    page1.addChild(this.context.createButton("OK", (e) -> {
-      System.out.println("OK");
-    }));
-    UiVerticalPanel page2 = this.context.createVerticalPanel();
-    UiTab tab2 = tabPanel.addChild(page2, "Tab2");
-    UiVerticalPanel page3 = this.context.createVerticalPanel();
-    page3.addChild(this.context.createLabel("Hi from Tab3"));
-    UiTab tab3 = tabPanel.addChild(page3, "Tab3");
+    UiTabPanel tabPanel = UiTabPanel.of(this.context);
+    UiTab tab1 = createTab1(tabPanel);
+    UiVerticalPanel page2 = UiVerticalPanel.of(this.context);
+    // UiTab tab2 =
+    tabPanel.addChild(page2, "Tab2");
+    UiTab tab3 = createDynamicEditor(binding, tabPanel);
 
-    UiCheckbox showTab1 = this.context.createCheckbox("Show Tab1");
+    UiCheckbox showTab1 = UiCheckbox.of(this.context, "Show Tab1");
     showTab1.setId("showTab1");
     showTab1.setSelected(true);
     UiValueChangeEventListener showTab1Listener = (e) -> {
@@ -71,49 +71,77 @@ public class DemoUi {
       tab1.setVisible(selected);
     };
     showTab1.addListener(showTab1Listener);
-    UiCheckbox showTab3 = this.context.createCheckbox("Show Tab3");
+    UiCheckbox showTab3 = UiCheckbox.of(this.context, "Show Tab3");
     showTab3.setId("showTab3");
     showTab3.setSelected(true);
     UiValueChangeEventListener showTab3Listener = (e) -> {
       tab3.setVisible(showTab3.isSelected());
     };
     showTab3.addListener(showTab3Listener);
-    UiTextInput textInput = this.context.createTextInput("Login");
+    UiTextInput textInput = UiTextInput.of(this.context, "Login");
     textInput.setValidator(ValidatorMandatory.getInstance());
-    UiPasswordInput passwordInput = this.context.createPasswordInput("Password");
-    passwordInput.setAutocomplete(UiWidgetWithAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
+    UiPasswordInput passwordInput = UiPasswordInput.ofNew(this.context, "Password");
     UiPasswordInput confirmPasswordInput;
     // confirmPasswordInput = passwordInput.createConfirmationInput();
-    confirmPasswordInput = this.context.createPasswordInput("Confirm " + passwordInput.getName());
+    confirmPasswordInput = UiPasswordInput.of(this.context, "Confirm " + passwordInput.getName(),
+        UiWidgetWithAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
     confirmPasswordInput.setValidator(new ValidatorPasswordConfirmation(() -> passwordInput.getValue()));
-    confirmPasswordInput.setAutocomplete(UiWidgetWithAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
 
-    UiTextArea textArea = this.context.createTextArea("Comment");
-    UiRadioChoice<TimeUnit> choice = this.context.createRadioChoiceByEnum("Time-unit", TimeUnit.class);
-    UiFormGroup formGroupTabs = this.context.createFormGroup("Show Tabs", showTab1, showTab3);
-    UiFormGroup formGroupInputs = this.context.createFormGroup("Generic Inputs", textInput, passwordInput,
+    UiTextArea textArea = UiTextArea.of(this.context, "Comment");
+    UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum(this.context, "Time-unit", TimeUnit.class);
+    UiFormGroup<Void> formGroupTabs = UiFormGroup.of(this.context, "Show Tabs", showTab1, showTab3);
+    UiFormGroup<Void> formGroupInputs = UiFormGroup.of(this.context, "Generic Inputs", textInput, passwordInput,
         confirmPasswordInput, textArea, choice);
 
-    UiFormPanel formPanel = this.context.createFormPanel(formGroupTabs, formGroupInputs);
+    UiFormPanel<Void> formPanel = UiFormPanel.of(this.context, formGroupTabs, formGroupInputs);
     page2.addChild(formPanel);
-    UiButton submitButton = this.context.createButton("Submit", (e) -> {
+    UiButton submitButton = UiButton.of(this.context, "Submit", (e) -> {
       formPanel.validate();
     });
     submitButton.getStyles().add("submit");
-    UiButton deleteButton = this.context.createButton("Delete", (e) -> {
+    UiButton deleteButton = UiButton.of(this.context, "Delete", (e) -> {
       System.out.println("Delete");
     });
     deleteButton.getStyles().add("danger");
-    UiButton cancelButton = this.context.createButton("Cancel", (e) -> {
+    UiButton cancelButton = UiButton.of(this.context, "Cancel", (e) -> {
       System.out.println("Cancel");
     });
     cancelButton.getStyles().add("abort");
-    UiButtonPanel buttonPanel = this.context.createButtonPanel(submitButton, deleteButton, cancelButton);
+    UiButtonPanel buttonPanel = UiButtonPanel.of(this.context, submitButton, deleteButton, cancelButton);
     page2.addChild(buttonPanel);
     createChartTab(tabPanel);
     createVideoTab(tabPanel);
     mainWindow.addChild(tabPanel);
     mainWindow.setVisible(true);
+  }
+
+  private UiTab createTab1(UiTabPanel tabPanel) {
+
+    UiVerticalPanel page1 = UiVerticalPanel.of(this.context);
+    UiTab tab1 = tabPanel.addChild(page1, "Tab1");
+    page1.addChild(UiLabel.of(this.context, "Hello World"));
+    page1.addChild(UiButton.of(this.context, "OK", (e) -> {
+      System.out.println("OK");
+    }));
+    return tab1;
+  }
+
+  private UiTab createDynamicEditor(UiBinding binding, UiTabPanel tabPanel) {
+
+    UiVerticalPanel page3 = UiVerticalPanel.of(this.context);
+    UiFormPanel<TestBean> formPanel = binding.createFormPanel(new TestBean());
+    page3.addChild(formPanel);
+    UiButton submitButton = UiButton.of(this.context, "Submit", (e) -> {
+      System.out.println("Submit");
+      boolean valid = formPanel.validate();
+      System.out.println("Valid:" + valid);
+      System.out.println(formPanel.getValue().toString());
+    });
+    submitButton.getStyles().add("submit");
+    UiButtonPanel buttonPanel = UiButtonPanel.of(this.context, submitButton);
+    page3.addChild(buttonPanel);
+    UiTab tab3 = tabPanel.addChild(page3, "Tab3");
+    return tab3;
   }
 
   private void initMenuBar(UiMainWindow mainWindow) {
@@ -132,20 +160,29 @@ public class DemoUi {
   private static void createChartTab(UiTabPanel tabPanel) {
 
     UiContext context = tabPanel.getContext();
-    UiPieChart chart = context.create(UiPieChart.class);
-    chart.setTitle("Demo Chart");
-    chart.setLegendPlacement(Direction.RIGHT);
-    chart.setData(UiDataSet.of("AWT", 1), UiDataSet.of("Swing", 5), UiDataSet.of("SWT/Eclipse", 4),
+    UiVerticalPanel panel = UiVerticalPanel.of(context);
+    UiPieChart pieChart = context.create(UiPieChart.class);
+    pieChart.setTitle("Pie Chart Demo");
+    pieChart.setLegendPlacement(Direction.RIGHT);
+    pieChart.setData(UiDataSet.of("AWT", 1), UiDataSet.of("Swing", 5), UiDataSet.of("SWT/Eclipse", 4),
         UiDataSet.of("JavaFx", 5), UiDataSet.of("JSF", 3), UiDataSet.of("GWT", 1), UiDataSet.of("AngularJS", 2),
         UiDataSet.of("Angular", 5), UiDataSet.of("React", 3), UiDataSet.of("Vue", 2), UiDataSet.of("Ionic", 2),
         UiDataSet.of("Android", 6), UiDataSet.of("iOS", 4));
-    UiTab tab = tabPanel.addChild(chart, "Chart");
+    panel.addChild(pieChart);
+    UiBarChartHorizontal barChart = context.create(UiBarChartHorizontal.class);
+    barChart.setTitle("Bar Chart Demo");
+    barChart.setSeriesLabels("2018", "2019", "2020");
+    barChart.setData(UiDataSet.of("Angular", new UiDataSeriesDouble(2200, 3000, 2900)),
+        UiDataSet.of("React", new UiDataSeriesDouble(1200, 2100, 3000)),
+        UiDataSet.of("Vue", new UiDataSeriesDouble(250, 600, 1000)));
+    panel.addChild(barChart);
+    UiTab tab = tabPanel.addChild(panel, "Chart");
   }
 
   private static void createVideoTab(UiTabPanel tabPanel) {
 
     UiContext context = tabPanel.getContext();
-    UiVerticalPanel page = context.createVerticalPanel();
+    UiVerticalPanel page = UiVerticalPanel.of(context);
     UiMediaPlayer player = context.create(UiMediaPlayer.class);
     UiMediaSource sourceLq = new UiMediaSource("https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4",
         UiMediaSource.MIMETYPE_VIDEO_MP4);

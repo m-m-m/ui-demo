@@ -42,7 +42,7 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-ui-tvm</artifactId>
+      <artifactId>mmm-ui-tvm-all</artifactId>
     </dependency>
   </dependencies>
 
