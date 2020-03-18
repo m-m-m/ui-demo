@@ -1,0 +1,31 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * You may explicitly copy and modify this stylesheet and include it into your project. */
+ui-input>label {
+  clear: both;
+  float: left;
+  width: 18%;
+  text-align: right;
+  font-weight: bold;
+  white-space: nowrap;
+}
+ui-input>label {
+  margin-left: 0.75em;
+  margin-right: 0.5em;
+  padding-top: 0.1em;
+}
+fieldset>ui-input>label {
+  margin-right: 0.5em;
+  padding-top: 0.1em;
+}
+ui-input>label:after {
+  content: ':';
+}
+ui-input>label.mandatory:after {
+  content: '*:';
+}
+ui-input>:not(label) {
+  min-width: 72%;
+  margin-bottom: 0.5em;
+  display: block;
+}

@@ -4,6 +4,9 @@
 body {
   font-family: var(--font);
   background: var(--col-bg);
+  
+}
+:not(input):not(textarea):not(select) {
   color: var(--col-text);
 }
 button,
@@ -82,42 +85,6 @@ ui-icon {
 }
 .abort {
   background: var(--col-abort);
-}
-fieldset>label, form>label {
-  clear: both;
-  float: left;
-  width: 18%;
-  text-align: right;
-  font-weight: bold;
-  white-space: nowrap;
-}
-fieldset>label {
-  margin-right: 0.5em;
-  padding-top: 0.1em;
-}
-form>label {
-  margin-left: 0.75em;
-  margin-right: 0.5em;
-  padding-top: 0.1em;
-}
-fieldset>label:after,
-form>label:after {
-  content: ':';
-}
-fieldset>label.mandatory:after,
-form>label.mandatory:after {
-  content: '*:';
-}
-fieldset>:not(label):not(legend) {
-  min-width: 72%;
-  margin-bottom: 0.5em;
-  display: block;
-}
-form>:not(label):not(fieldset) {
-  min-width: 70%;
-  width: 70%;
-  margin-bottom: 0.5em;
-  display: block;
 }
 ui-vpanel {
   display: flex;

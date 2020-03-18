@@ -1,0 +1,28 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * You may explicitly copy and modify this stylesheet and include it into your project. */
+:root {
+  --col-bg: #000000;
+  --col-text: #FFFFFF;
+  --col-focus: #2080FF80;
+  --col-hover: #2080FF80;
+  --col-invalid: #FF0000;
+  --col-error: #FF0000;
+  --col-warning: #A0A000;
+  --col-info: #2070D0;
+  --col-danger: #A04020;
+  --col-submit: #40A040;
+  --col-abort: #E0E0E0;
+  --col-border: #777777;
+  --col-button: #606060;
+  --col-tab: linear-gradient(#AAAAAA, #555555);
+  --col-active: #202030;
+  --ico-error: '\f057';
+  --ico-warning: '\f071';
+  --ico-info: '\f05a';
+  --ico-question: '\f059';
+  --ico-expand: '\f0fe';
+  --ico-collapse: '\f146';
+  --radius: 0.5em;
+  --font: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}

@@ -20,6 +20,7 @@ import io.github.mmm.ui.widget.chart.UiBarChartHorizontal;
 import io.github.mmm.ui.widget.chart.UiPieChart;
 import io.github.mmm.ui.widget.composite.UiTab;
 import io.github.mmm.ui.widget.input.UiCheckbox;
+import io.github.mmm.ui.widget.input.UiIntegerSlider;
 import io.github.mmm.ui.widget.input.UiPasswordInput;
 import io.github.mmm.ui.widget.input.UiRadioChoice;
 import io.github.mmm.ui.widget.input.UiTextArea;
@@ -89,9 +90,11 @@ public class DemoUi {
 
     UiTextArea textArea = UiTextArea.of(this.context, "Comment");
     UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum(this.context, "Time-unit", TimeUnit.class);
+    UiIntegerSlider slider = UiIntegerSlider.of(this.context, "Slider");
+    slider.setTextEditable(true);
     UiFormGroup<Void> formGroupTabs = UiFormGroup.of(this.context, "Show Tabs", showTab1, showTab3);
     UiFormGroup<Void> formGroupInputs = UiFormGroup.of(this.context, "Generic Inputs", textInput, passwordInput,
-        confirmPasswordInput, textArea, choice);
+        confirmPasswordInput, textArea, choice, slider);
 
     UiFormPanel<Void> formPanel = UiFormPanel.of(this.context, formGroupTabs, formGroupInputs);
     page2.addChild(formPanel);
