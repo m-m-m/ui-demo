@@ -60,6 +60,34 @@
           </webResources>
         </configuration>
       </plugin>
+     
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>download-sources</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>sources</goal>
+            </goals>
+            <configuration>
+              <excludeArtifactIds>mmm-ui-tvm-all</excludeArtifactIds>
+            </configuration>
+          </execution>
+          <execution>
+            <id>extract-sources</id>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>unpack-dependencies</goal>
+            </goals>
+            <configuration>
+              <classifier>sources</classifier>
+              <outputDirectory>${project.build.directory}/generated/js/teavm/src</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
       <!-- Configure TeaVM -->
       <plugin>
