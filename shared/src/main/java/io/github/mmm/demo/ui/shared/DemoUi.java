@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.UiContext;
-import io.github.mmm.ui.binding.UiBinding;
+import io.github.mmm.ui.binding.data.UiDataBinding;
 import io.github.mmm.ui.datatype.chart.UiDataSeriesDouble;
 import io.github.mmm.ui.datatype.chart.UiDataSet;
 import io.github.mmm.ui.datatype.media.UiMedia;
@@ -54,7 +54,7 @@ public class DemoUi {
 
   public void run() {
 
-    UiBinding binding = new UiBinding(this.context);
+    UiDataBinding binding = new UiDataBinding(this.context);
     UiMainWindow mainWindow = this.context.getMainWindow();
     initMenuBar(mainWindow);
     UiTabPanel tabPanel = UiTabPanel.of(this.context);
@@ -129,7 +129,7 @@ public class DemoUi {
     return tab1;
   }
 
-  private UiTab createDynamicEditor(UiBinding binding, UiTabPanel tabPanel) {
+  private UiTab createDynamicEditor(UiDataBinding binding, UiTabPanel tabPanel) {
 
     UiVerticalPanel page3 = UiVerticalPanel.of(this.context);
     UiFormPanel<TestBean> formPanel = binding.createFormPanel(new TestBean());
