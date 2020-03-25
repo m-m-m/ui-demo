@@ -4,7 +4,6 @@
 body {
   font-family: var(--font);
   background: var(--col-bg);
-  
 }
 :not(input):not(textarea):not(select) {
   color: var(--col-text);
@@ -63,7 +62,7 @@ ui-icon {
   color: var(--col-warning);
   content: var(--ico-warning);
 }
-.info:before {
+.information:before {
   color: var(--col-info);
   content: var(--ico-info);
 }
@@ -120,7 +119,7 @@ legend>*, ui-tabs>button>* {
   margin-left: 2px;
   margin-right: 2px;
 }
-*[aria-hidden=true], .hidden, fieldset.collapsed>:not(legend) {
+.hidden, fieldset.collapsed>:not(legend) {
   display:none;
 }
 ui-tabs {

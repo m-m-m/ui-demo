@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
@@ -9,6 +10,13 @@
 
   <artifactId>mmm-demo-ui-tvm</artifactId>
   <packaging>war</packaging>
+
+  <properties>
+    <tvm.minifying>true</tvm.minifying>
+    <tvm.debug.information>false</tvm.debug.information>
+    <tvm.source.maps>false</tvm.source.maps>
+    <tvm.optimization>ADVANCED</tvm.optimization>
+  </properties>
 
   <dependencies>
     <!-- Emulator of Java class library for TeaVM -->
@@ -31,7 +39,7 @@
       <artifactId>javax.servlet-api</artifactId>
       <scope>provided</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>${project.groupId}</groupId>
       <artifactId>mmm-demo-ui-shared</artifactId>
@@ -60,34 +68,6 @@
           </webResources>
         </configuration>
       </plugin>
-     
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>download-sources</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>sources</goal>
-            </goals>
-            <configuration>
-              <excludeArtifactIds>mmm-ui-tvm-all</excludeArtifactIds>
-            </configuration>
-          </execution>
-          <execution>
-            <id>extract-sources</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>unpack-dependencies</goal>
-            </goals>
-            <configuration>
-              <classifier>sources</classifier>
-              <outputDirectory>${project.build.directory}/generated/js/teavm/src</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
 
       <!-- Configure TeaVM -->
       <plugin>
@@ -103,15 +83,59 @@
             <configuration>
               <targetDirectory>${project.build.directory}/generated/js/teavm</targetDirectory>
               <mainClass>io.github.mmm.demo.ui.tvm.DemoUiTvm</mainClass>
-              <minifying>false</minifying>
-              <debugInformationGenerated>true</debugInformationGenerated>
-              <sourceMapsGenerated>true</sourceMapsGenerated>
-              <sourceFilesCopied>true</sourceFilesCopied>
-              <optimizationLevel>SIMPLE</optimizationLevel>
+              <minifying>${tvm.minifying}</minifying>
+              <debugInformationGenerated>${tvm.debug.information}</debugInformationGenerated>
+              <sourceMapsGenerated>${tvm.source.maps}</sourceMapsGenerated>
+              <!-- <sourceFilesCopied>true</sourceFilesCopied> -->
+              <optimizationLevel>${tvm.optimization}</optimizationLevel>
             </configuration>
           </execution>
         </executions>
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>tvm-dev</id>
+      <activation>
+        <property>
+          <name>tvmDev</name>
+        </property>
+      </activation>
+      <properties>
+        <tvm.minifying>false</tvm.minifying>
+        <tvm.source.maps>true</tvm.source.maps>
+        <tvm.debug.information>true</tvm.debug.information>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>download-sources</id>
+                <phase>process-sources</phase>
+                <goals>
+                  <goal>sources</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>extract-sources</id>
+                <phase>process-sources</phase>
+                <goals>
+                  <goal>unpack-dependencies</goal>
+                </goals>
+                <configuration>
+                  <classifier>sources</classifier>
+                  <outputDirectory>${project.build.directory}/generated/js/teavm/src</outputDirectory>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>

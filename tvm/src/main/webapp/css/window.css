@@ -1,0 +1,109 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * You may explicitly copy and modify this stylesheet and include it into your project. */
+ui-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000080;
+}
+ui-window {
+  position: fixed;
+  box-shadow: 0 15px 30px #00000040, 0 10px 20px #00000040;
+  background: var(--col-bg);
+}
+ui-wheader {
+  display: flex;
+  flex-direction: row;
+  border: 0.2em solid var(--col-header);
+  background: var(--col-header);
+}
+ui-wcontrols {
+  background: var(--col-header);
+}
+ui-wtitle {  
+  cursor: move;
+  touch-action: none;
+  flex: 1 1 20px;
+  text-align: center;
+  background: var(--col-header);
+}
+ui-wcontrols>button {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  min-width: 2em;
+  padding: 0;
+}
+.minimize:before {
+  content: '\f2d1';
+}
+.maximize:before {
+  content: '\f2d0';
+}
+.normalize:before {
+  content: '\f2d2';
+}
+.close:before {
+  content: '\f00d'
+}
+ui-wborder {
+  position: absolute;
+}
+ui-wborder.e {
+  cursor: e-resize;
+  right: -10px;
+  top: 10px;
+  width: 12px;
+  height: calc(100% - 20px);
+}
+ui-wborder.se {
+  cursor: se-resize;
+  right: -10px;
+  bottom: -10px;
+  height: 20px;
+  width: 20px;
+}
+ui-wborder.s {
+  cursor: s-resize;
+  left: 10px;
+  bottom: -10px;
+  height: 12px;
+  width: calc(100% - 20px);
+}
+ui-wborder.sw {
+  cursor: sw-resize;
+  left: -10px;
+  bottom: -10px;
+  height: 20px;
+  width: 20px;
+}
+ui-wborder.w {
+  cursor: w-resize;
+  left: -10px;
+  top: 10px;
+  height: calc(100% - 20px);
+  width: 12px;
+}
+ui-wborder.nw {
+  cursor: nw-resize;
+  left: -10px;
+  top: -10px;
+  height: 20px;
+  width: 20px;
+}
+ui-wborder.n {
+  cursor: n-resize;
+  left: 10px;
+  top: -10px;
+  height: 12px;
+  width: calc(100% - 20px);
+}
+ui-wborder.ne {
+  cursor: ne-resize;
+  right: -10px;
+  top: -10px;
+  height: 20px;
+  width: 20px;
+}

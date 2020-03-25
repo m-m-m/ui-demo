@@ -17,6 +17,7 @@
   --col-button: linear-gradient(#FAFAFA, #EEEEEE);
   --col-tab: linear-gradient(#DDDDDD, #777777);
   --col-active: #F7F7FF;
+  --col-header: #8080FF;
   --ico-error: '\f057';
   --ico-warning: '\f071';
   --ico-info: '\f05a';

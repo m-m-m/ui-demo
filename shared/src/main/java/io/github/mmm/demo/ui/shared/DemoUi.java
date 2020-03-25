@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.UiContext;
 import io.github.mmm.ui.binding.data.UiDataBinding;
+import io.github.mmm.ui.datatype.UiSeverity;
 import io.github.mmm.ui.datatype.chart.UiDataSeriesDouble;
 import io.github.mmm.ui.datatype.chart.UiDataSet;
 import io.github.mmm.ui.datatype.media.UiMedia;
@@ -124,7 +125,7 @@ public class DemoUi {
     UiTab tab1 = tabPanel.addChild(page1, "Tab1");
     page1.addChild(UiLabel.of(this.context, "Hello World"));
     page1.addChild(UiButton.of(this.context, "OK", (e) -> {
-      System.out.println("OK");
+      this.context.getNotifier().showPopupOk("This is a test\n<br><blink>blink</blink>", UiSeverity.INFORMATION);
     }));
     return tab1;
   }
