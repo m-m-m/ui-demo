@@ -25,7 +25,11 @@ ui-input>label.mandatory:after {
   content: '*:';
 }
 ui-input>:not(label) {
-  min-width: 72%;
+  width: 72%;
   margin-bottom: 0.5em;
-  display: block;
+  display: flex;
+  flex-direction: row;
+}
+ui-slider>input[type=range] {
+  flex: 1 1 0;
 }

@@ -14,6 +14,7 @@ import io.github.mmm.ui.datatype.media.UiMedia;
 import io.github.mmm.ui.datatype.media.UiMediaSource;
 import io.github.mmm.ui.datatype.media.UiMediaTrack;
 import io.github.mmm.ui.event.UiValueChangeEventListener;
+import io.github.mmm.ui.event.action.UiActionClose;
 import io.github.mmm.ui.widget.UiLabel;
 import io.github.mmm.ui.widget.attribute.UiWidgetWithAutocomplete;
 import io.github.mmm.ui.widget.button.UiButton;
@@ -35,6 +36,8 @@ import io.github.mmm.ui.widget.panel.UiFormPanel;
 import io.github.mmm.ui.widget.panel.UiTabPanel;
 import io.github.mmm.ui.widget.panel.UiVerticalPanel;
 import io.github.mmm.ui.widget.window.UiMainWindow;
+import io.github.mmm.ui.widget.window.UiPopup;
+import io.github.mmm.ui.widget.window.UiWindow;
 
 /**
  * Demo of portable User-Interface with {@code mmm-ui}.
@@ -43,6 +46,10 @@ import io.github.mmm.ui.widget.window.UiMainWindow;
 public class DemoUi {
 
   private final UiContext context;
+
+  private int counter = 1;
+
+  private UiPopup popup;
 
   /**
    * The constructor.
@@ -124,8 +131,25 @@ public class DemoUi {
     UiVerticalPanel page1 = UiVerticalPanel.of(this.context);
     UiTab tab1 = tabPanel.addChild(page1, "Tab1");
     page1.addChild(UiLabel.of(this.context, "Hello World"));
-    page1.addChild(UiButton.of(this.context, "OK", (e) -> {
-      this.context.getNotifier().showPopupOk("This is a test\n<br><blink>blink</blink>", UiSeverity.INFORMATION);
+    page1.addChild(UiButton.of(this.context, "Open Window", (e) -> {
+      UiButtonPanel buttonPanel = UiButtonPanel.of(this.context);
+      UiWindow window = UiWindow.of(this.context, buttonPanel);
+      window.setTitle("Window" + this.counter++);
+      UiActionClose action = evt -> {
+        window.close();
+      };
+      buttonPanel.addChild(UiButton.of(this.context, action));
+      window.setX(this.counter * 10);
+      window.setY(this.counter * 10);
+      window.open();
+    }));
+    page1.addChild(UiButton.of(this.context, "Open Popup", (e) -> {
+      if (this.popup == null) {
+        this.popup = this.context.getNotifier().showPopupOk("This is a test\n<br><blink>blink</blink>",
+            UiSeverity.INFORMATION);
+      } else {
+        this.popup.open();
+      }
     }));
     return tab1;
   }

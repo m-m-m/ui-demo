@@ -122,6 +122,12 @@ legend>*, ui-tabs>button>* {
 .hidden, fieldset.collapsed>:not(legend) {
   display:none;
 }
+ui-slider>output {
+  border: 1px solid var(--col-text);
+  margin-left: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
 ui-tabs {
 	display: inline-flex;
 }
@@ -135,7 +141,7 @@ ui-tabs>button {
   text-overflow: ellipsis;
   background: var(--col-tab);
 }
-ui-tabs>button[aria-selected='true'] {
+ui-tabs>button[aria-selected=true] {
   font-weight: bold;
   border-bottom-width: 0;
   background: var(--col-active);

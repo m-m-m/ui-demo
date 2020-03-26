@@ -22,8 +22,8 @@
   
   <modules>
     <module>shared</module>
-    <module>tvm</module>
     <module>fx</module>
+    <module>tvm</module>
   </modules>
   
   <dependencyManagement>
