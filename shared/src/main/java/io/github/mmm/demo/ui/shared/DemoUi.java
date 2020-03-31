@@ -136,11 +136,11 @@ public class DemoUi {
     page1.addChild(UiButton.of(this.context, "Open Window", (e) -> {
       UiButtonPanel buttonPanel = UiButtonPanel.of(this.context);
       UiWindow window = UiWindow.of(this.context, buttonPanel);
-      window.setTitle("Window" + this.counter++);
       UiActionClose action = evt -> {
         window.close();
       };
       buttonPanel.addChild(UiButton.of(this.context, action));
+      window.setTitle("Window" + this.counter++);
       window.getPosition().setX(200 + this.counter * 10);
       window.getPosition().setY(200 + this.counter * 10);
       window.open();
