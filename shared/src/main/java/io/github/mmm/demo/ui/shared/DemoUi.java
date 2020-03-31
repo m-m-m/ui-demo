@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.UiContext;
+import io.github.mmm.ui.attribute.AttributeWriteAutocomplete;
 import io.github.mmm.ui.binding.data.UiDataBinding;
 import io.github.mmm.ui.datatype.UiSeverity;
 import io.github.mmm.ui.datatype.chart.UiDataSeriesDouble;
@@ -16,7 +17,6 @@ import io.github.mmm.ui.datatype.media.UiMediaTrack;
 import io.github.mmm.ui.event.UiValueChangeEventListener;
 import io.github.mmm.ui.event.action.UiActionClose;
 import io.github.mmm.ui.widget.UiLabel;
-import io.github.mmm.ui.widget.attribute.UiWidgetWithAutocomplete;
 import io.github.mmm.ui.widget.button.UiButton;
 import io.github.mmm.ui.widget.chart.UiBarChartHorizontal;
 import io.github.mmm.ui.widget.chart.UiPieChart;
@@ -88,12 +88,14 @@ public class DemoUi {
     };
     showTab3.addListener(showTab3Listener);
     UiTextInput textInput = UiTextInput.of(this.context, "Login");
+    textInput.setId("login");
+    textInput.setAutocomplete(AttributeWriteAutocomplete.AUTOCOMPLETE_USERNAME);
     textInput.setValidator(ValidatorMandatory.getInstance());
     UiPasswordInput passwordInput = UiPasswordInput.ofNew(this.context, "Password");
     UiPasswordInput confirmPasswordInput;
     // confirmPasswordInput = passwordInput.createConfirmationInput();
     confirmPasswordInput = UiPasswordInput.of(this.context, "Confirm " + passwordInput.getName(),
-        UiWidgetWithAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
+        AttributeWriteAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
     confirmPasswordInput.setValidator(new ValidatorPasswordConfirmation(() -> passwordInput.getValue()));
 
     UiTextArea textArea = UiTextArea.of(this.context, "Comment");
@@ -139,8 +141,8 @@ public class DemoUi {
         window.close();
       };
       buttonPanel.addChild(UiButton.of(this.context, action));
-      window.setX(this.counter * 10);
-      window.setY(this.counter * 10);
+      window.getPosition().setX(200 + this.counter * 10);
+      window.getPosition().setY(200 + this.counter * 10);
       window.open();
     }));
     page1.addChild(UiButton.of(this.context, "Open Popup", (e) -> {
