@@ -31,7 +31,7 @@ ui-wtitle {
   background: var(--col-header);
 }
 ui-wcontrols>button {
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'FontAwesome';
   font-weight: 900;
   min-width: 2em;
   padding: 0;

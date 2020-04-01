@@ -51,7 +51,7 @@ input, textarea, select, button {
   border-radius: var(--radius);
 }
 ui-icon {
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'FontAwesome';
   font-weight: 900;
 }
 .error:before {
