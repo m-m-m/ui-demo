@@ -13,9 +13,6 @@ module io.github.mmm.demo.ui.fx {
 
   requires transitive io.github.mmm.demo.ui.shared;
 
-  // TODO JMPS / Eclipse is buggy
-  requires transitive io.github.mmm.ui;
-
   exports io.github.mmm.demo.ui.fx;
 
 }

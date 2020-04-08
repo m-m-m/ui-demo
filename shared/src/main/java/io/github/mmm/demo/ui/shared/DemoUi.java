@@ -5,39 +5,41 @@ package io.github.mmm.demo.ui.shared;
 import java.util.concurrent.TimeUnit;
 
 import io.github.mmm.base.placement.Direction;
-import io.github.mmm.ui.UiContext;
-import io.github.mmm.ui.attribute.AttributeWriteAutocomplete;
-import io.github.mmm.ui.binding.data.UiDataBinding;
-import io.github.mmm.ui.datatype.UiSeverity;
-import io.github.mmm.ui.datatype.chart.UiDataSeriesDouble;
-import io.github.mmm.ui.datatype.chart.UiDataSet;
-import io.github.mmm.ui.datatype.media.UiMedia;
-import io.github.mmm.ui.datatype.media.UiMediaSource;
-import io.github.mmm.ui.datatype.media.UiMediaTrack;
-import io.github.mmm.ui.event.UiValueChangeEventListener;
-import io.github.mmm.ui.event.action.UiActionClose;
-import io.github.mmm.ui.widget.UiLabel;
-import io.github.mmm.ui.widget.button.UiButton;
-import io.github.mmm.ui.widget.chart.UiBarChartHorizontal;
-import io.github.mmm.ui.widget.chart.UiPieChart;
-import io.github.mmm.ui.widget.composite.UiTab;
-import io.github.mmm.ui.widget.input.UiCheckbox;
-import io.github.mmm.ui.widget.input.UiIntegerSlider;
-import io.github.mmm.ui.widget.input.UiPasswordInput;
-import io.github.mmm.ui.widget.input.UiRadioChoice;
-import io.github.mmm.ui.widget.input.UiTextArea;
-import io.github.mmm.ui.widget.input.UiTextInput;
-import io.github.mmm.ui.widget.media.UiMediaPlayer;
-import io.github.mmm.ui.widget.menu.UiMenu;
-import io.github.mmm.ui.widget.menu.UiMenuBar;
-import io.github.mmm.ui.widget.panel.UiButtonPanel;
-import io.github.mmm.ui.widget.panel.UiFormGroup;
-import io.github.mmm.ui.widget.panel.UiFormPanel;
-import io.github.mmm.ui.widget.panel.UiTabPanel;
-import io.github.mmm.ui.widget.panel.UiVerticalPanel;
-import io.github.mmm.ui.widget.window.UiMainWindow;
-import io.github.mmm.ui.widget.window.UiPopup;
-import io.github.mmm.ui.widget.window.UiWindow;
+import io.github.mmm.ui.api.UiContext;
+import io.github.mmm.ui.api.attribute.AttributeWriteAutocomplete;
+import io.github.mmm.ui.api.binding.data.UiDataBinding;
+import io.github.mmm.ui.api.datatype.UiPoint;
+import io.github.mmm.ui.api.datatype.UiSeverity;
+import io.github.mmm.ui.api.datatype.chart.UiDataSeriesDouble;
+import io.github.mmm.ui.api.datatype.chart.UiDataSet;
+import io.github.mmm.ui.api.datatype.media.UiMedia;
+import io.github.mmm.ui.api.datatype.media.UiMediaSource;
+import io.github.mmm.ui.api.datatype.media.UiMediaTrack;
+import io.github.mmm.ui.api.event.UiValueChangeEventListener;
+import io.github.mmm.ui.api.event.action.UiActionClose;
+import io.github.mmm.ui.api.widget.UiLabel;
+import io.github.mmm.ui.api.widget.button.UiButton;
+import io.github.mmm.ui.api.widget.chart.UiBarChartHorizontal;
+import io.github.mmm.ui.api.widget.chart.UiLineChart;
+import io.github.mmm.ui.api.widget.chart.UiPieChart;
+import io.github.mmm.ui.api.widget.composite.UiTab;
+import io.github.mmm.ui.api.widget.input.UiCheckbox;
+import io.github.mmm.ui.api.widget.input.UiIntegerSlider;
+import io.github.mmm.ui.api.widget.input.UiPasswordInput;
+import io.github.mmm.ui.api.widget.input.UiRadioChoice;
+import io.github.mmm.ui.api.widget.input.UiTextArea;
+import io.github.mmm.ui.api.widget.input.UiTextInput;
+import io.github.mmm.ui.api.widget.media.UiMediaPlayer;
+import io.github.mmm.ui.api.widget.menu.UiMenu;
+import io.github.mmm.ui.api.widget.menu.UiMenuBar;
+import io.github.mmm.ui.api.widget.panel.UiButtonPanel;
+import io.github.mmm.ui.api.widget.panel.UiFormGroup;
+import io.github.mmm.ui.api.widget.panel.UiFormPanel;
+import io.github.mmm.ui.api.widget.panel.UiTabPanel;
+import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
+import io.github.mmm.ui.api.widget.window.UiMainWindow;
+import io.github.mmm.ui.api.widget.window.UiPopup;
+import io.github.mmm.ui.api.widget.window.UiWindow;
 
 /**
  * Demo of portable User-Interface with {@code mmm-ui}.
@@ -122,6 +124,7 @@ public class DemoUi {
     cancelButton.getStyles().add("abort");
     UiButtonPanel buttonPanel = UiButtonPanel.of(this.context, submitButton, deleteButton, cancelButton);
     page2.addChild(buttonPanel);
+    // TemporalDemo.createTab(tabPanel);
     createChartTab(tabPanel);
     createVideoTab(tabPanel);
     mainWindow.addChild(tabPanel);
@@ -191,21 +194,25 @@ public class DemoUi {
 
     UiContext context = tabPanel.getContext();
     UiVerticalPanel panel = UiVerticalPanel.of(context);
-    UiPieChart pieChart = context.create(UiPieChart.class);
-    pieChart.setTitle("Pie Chart Demo");
+    UiPieChart pieChart = UiPieChart.of(context, "Pie Chart Demo", Direction.RIGHT, UiDataSet.of("AWT", 1),
+        UiDataSet.of("Swing", 5), UiDataSet.of("SWT/Eclipse", 4), UiDataSet.of("JavaFx", 5), UiDataSet.of("JSF", 3),
+        UiDataSet.of("GWT", 1), UiDataSet.of("AngularJS", 2), UiDataSet.of("Angular", 5), UiDataSet.of("React", 3),
+        UiDataSet.of("Vue", 2), UiDataSet.of("Ionic", 2), UiDataSet.of("Android", 6), UiDataSet.of("iOS", 4));
     pieChart.setLegendPlacement(Direction.RIGHT);
-    pieChart.setData(UiDataSet.of("AWT", 1), UiDataSet.of("Swing", 5), UiDataSet.of("SWT/Eclipse", 4),
-        UiDataSet.of("JavaFx", 5), UiDataSet.of("JSF", 3), UiDataSet.of("GWT", 1), UiDataSet.of("AngularJS", 2),
-        UiDataSet.of("Angular", 5), UiDataSet.of("React", 3), UiDataSet.of("Vue", 2), UiDataSet.of("Ionic", 2),
-        UiDataSet.of("Android", 6), UiDataSet.of("iOS", 4));
     panel.addChild(pieChart);
-    UiBarChartHorizontal barChart = context.create(UiBarChartHorizontal.class);
-    barChart.setTitle("Bar Chart Demo");
-    barChart.setSeriesLabels("2018", "2019", "2020");
-    barChart.setData(UiDataSet.of("Angular", new UiDataSeriesDouble(2200, 3000, 2900)),
+    UiBarChartHorizontal barChart = UiBarChartHorizontal.of(context, "Bar Chart Demo", Direction.RIGHT,
+        UiDataSet.of("Angular", new UiDataSeriesDouble(2200, 3000, 2900)),
         UiDataSet.of("React", new UiDataSeriesDouble(1200, 2100, 3000)),
         UiDataSet.of("Vue", new UiDataSeriesDouble(250, 600, 1000)));
+    barChart.setSeriesLabels("2018", "2019", "2020");
     panel.addChild(barChart);
+    UiLineChart lineChart = UiLineChart.of(context, "Line Chart Demo", Direction.RIGHT,
+        UiDataSet.of("Linear",
+            new UiPoint[] { new UiPoint(1, 1), new UiPoint(2, 2), new UiPoint(3, 3), new UiPoint(4, 4),
+            new UiPoint(5, 5) }),
+        UiDataSet.of("Square", new UiPoint[] { new UiPoint(1, 1), new UiPoint(2, 4), new UiPoint(3, 9),
+        new UiPoint(4, 16), new UiPoint(5, 25) }));
+    panel.addChild(lineChart);
     UiTab tab = tabPanel.addChild(panel, "Chart");
   }
 

@@ -3,7 +3,7 @@
 package io.github.mmm.demo.ui.fx;
 
 import io.github.mmm.demo.ui.shared.DemoUi;
-import io.github.mmm.ui.UiContext;
+import io.github.mmm.ui.api.UiContext;
 import io.github.mmm.ui.fx.FxApplication;
 import javafx.application.Application;
 
