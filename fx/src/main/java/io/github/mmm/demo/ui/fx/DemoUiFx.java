@@ -3,7 +3,6 @@
 package io.github.mmm.demo.ui.fx;
 
 import io.github.mmm.demo.ui.shared.DemoUi;
-import io.github.mmm.ui.api.UiContext;
 import io.github.mmm.ui.fx.FxApplication;
 import javafx.application.Application;
 
@@ -13,11 +12,14 @@ import javafx.application.Application;
 public class DemoUiFx extends FxApplication {
 
   @Override
-  protected void start(UiContext context) {
+  protected void start() {
 
-    new DemoUi(context).run();
+    new DemoUi().run();
   }
 
+  /**
+   * @param args the command-line arguments.
+   */
   public static void main(String[] args) {
 
     Application.launch(DemoUiFx.class, args);
