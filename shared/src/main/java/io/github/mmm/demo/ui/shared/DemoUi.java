@@ -2,7 +2,10 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.demo.ui.shared;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.api.attribute.AttributeWriteAutocomplete;
@@ -15,14 +18,18 @@ import io.github.mmm.ui.api.datatype.media.UiMedia;
 import io.github.mmm.ui.api.datatype.media.UiMediaSource;
 import io.github.mmm.ui.api.datatype.media.UiMediaTrack;
 import io.github.mmm.ui.api.event.UiValueChangeEventListener;
+import io.github.mmm.ui.api.event.action.UiActionCancel;
 import io.github.mmm.ui.api.event.action.UiActionClose;
+import io.github.mmm.ui.api.event.action.UiActionDelete;
+import io.github.mmm.ui.api.event.action.UiActionSubmit;
 import io.github.mmm.ui.api.notifier.UiNotifier;
 import io.github.mmm.ui.api.widget.UiLabel;
+import io.github.mmm.ui.api.widget.UiRegularWidget;
 import io.github.mmm.ui.api.widget.button.UiButton;
 import io.github.mmm.ui.api.widget.chart.UiBarChartHorizontal;
 import io.github.mmm.ui.api.widget.chart.UiLineChart;
 import io.github.mmm.ui.api.widget.chart.UiPieChart;
-import io.github.mmm.ui.api.widget.composite.UiTab;
+import io.github.mmm.ui.api.widget.data.UiDataTable;
 import io.github.mmm.ui.api.widget.input.UiCheckbox;
 import io.github.mmm.ui.api.widget.input.UiIntegerSlider;
 import io.github.mmm.ui.api.widget.input.UiPasswordInput;
@@ -35,8 +42,9 @@ import io.github.mmm.ui.api.widget.menu.UiMenuBar;
 import io.github.mmm.ui.api.widget.panel.UiButtonPanel;
 import io.github.mmm.ui.api.widget.panel.UiFormGroup;
 import io.github.mmm.ui.api.widget.panel.UiFormPanel;
-import io.github.mmm.ui.api.widget.panel.UiTabPanel;
 import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
+import io.github.mmm.ui.api.widget.tab.UiTab;
+import io.github.mmm.ui.api.widget.tab.UiTabPanel;
 import io.github.mmm.ui.api.widget.window.UiMainWindow;
 import io.github.mmm.ui.api.widget.window.UiPopup;
 import io.github.mmm.ui.api.widget.window.UiWindow;
@@ -65,10 +73,10 @@ public class DemoUi implements Runnable {
     UiDataBinding binding = new UiDataBinding();
     initMenuBar();
     UiTabPanel tabPanel = UiTabPanel.of();
-    UiTab tab1 = createTab1(tabPanel);
+    UiTab tab1 = createWindowTab(tabPanel);
     UiVerticalPanel page2 = UiVerticalPanel.of();
     // UiTab tab2 =
-    tabPanel.addChild(page2, "Tab2");
+    tabPanel.addTab("Tab2", page2);
     UiTab tab3 = createDynamicEditor(binding, tabPanel);
 
     UiCheckbox showTab1 = UiCheckbox.of("Show Tab1");
@@ -88,6 +96,7 @@ public class DemoUi implements Runnable {
     showTab3.addListener(showTab3Listener);
     UiTextInput textInput = UiTextInput.of("Login");
     textInput.setId("login");
+    textInput.setTooltip("Unique identifier of the user for authentication");
     textInput.setAutocomplete(AttributeWriteAutocomplete.AUTOCOMPLETE_USERNAME);
     textInput.setValidator(ValidatorMandatory.getInstance());
     UiPasswordInput passwordInput = UiPasswordInput.ofNew("Password");
@@ -107,32 +116,34 @@ public class DemoUi implements Runnable {
 
     UiFormPanel<Void> formPanel = UiFormPanel.of(formGroupTabs, formGroupInputs);
     page2.addChild(formPanel);
-    UiButton submitButton = UiButton.of("Submit", (e) -> {
+    UiActionSubmit submit = e -> {
       formPanel.validate();
-    });
-    submitButton.getStyles().add("submit");
-    UiButton deleteButton = UiButton.of("Delete", (e) -> {
+    };
+    UiButton submitButton = UiButton.of(submit);
+    UiActionDelete delete = e -> {
       System.out.println("Delete");
-    });
-    deleteButton.getStyles().add("danger");
-    UiButton cancelButton = UiButton.of("Cancel", (e) -> {
+    };
+    UiButton deleteButton = UiButton.of(delete);
+    UiActionCancel cancel = e -> {
       System.out.println("Cancel");
-    });
+    };
+    UiButton cancelButton = UiButton.of(cancel);
     cancelButton.getStyles().add("abort");
     UiButtonPanel buttonPanel = UiButtonPanel.of(submitButton, deleteButton, cancelButton);
     page2.addChild(buttonPanel);
     // TemporalDemo.createTab(tabPanel);
     createChartTab(tabPanel);
     createVideoTab(tabPanel);
+    createTableTab(tabPanel);
     UiMainWindow mainWindow = UiMainWindow.get();
     mainWindow.addChild(tabPanel);
     mainWindow.setVisible(true);
   }
 
-  private UiTab createTab1(UiTabPanel tabPanel) {
+  private UiTab createWindowTab(UiTabPanel tabPanel) {
 
     UiVerticalPanel page1 = UiVerticalPanel.of();
-    UiTab tab1 = tabPanel.addChild(page1, "Tab1");
+    UiTab tab1 = tabPanel.addTab("Tab1", page1);
     page1.addChild(UiLabel.of("Hello World"));
     page1.addChild(UiButton.of("Open Window", (e) -> {
       UiButtonPanel buttonPanel = UiButtonPanel.of();
@@ -160,16 +171,16 @@ public class DemoUi implements Runnable {
     UiVerticalPanel page3 = UiVerticalPanel.of();
     UiFormPanel<TestBean> formPanel = binding.createFormPanel(new TestBean());
     page3.addChild(formPanel);
-    UiButton submitButton = UiButton.of("Submit", (e) -> {
+    UiActionSubmit submit = e -> {
       System.out.println("Submit");
       boolean valid = formPanel.validate();
       System.out.println("Valid:" + valid);
       System.out.println(formPanel.getValue().toString());
-    });
-    submitButton.getStyles().add("submit");
+    };
+    UiButton submitButton = UiButton.of(submit);
     UiButtonPanel buttonPanel = UiButtonPanel.of(submitButton);
     page3.addChild(buttonPanel);
-    UiTab tab3 = tabPanel.addChild(page3, "Tab3");
+    UiTab tab3 = tabPanel.addTab("Tab3", page3);
     return tab3;
   }
 
@@ -208,24 +219,46 @@ public class DemoUi implements Runnable {
         UiDataSet.of("Square", new UiPoint[] { new UiPoint(1, 1), new UiPoint(2, 4), new UiPoint(3, 9),
         new UiPoint(4, 16), new UiPoint(5, 25) }));
     panel.addChild(lineChart);
-    UiTab tab = tabPanel.addChild(panel, "Chart");
+    tabPanel.addTab("Chart", panel);
+  }
+
+  private static void createTableTab(UiTabPanel tabPanel) {
+
+    TestBean template = new TestBean();
+    UiDataTable<TestBean> table = UiDataTable.of(template);
+    table.setShowRowNumbers(true);
+    table.addColumn(template.Name);
+    table.addColumn(template.Age);
+    List<TestBean> data = new ArrayList<>(100);
+    for (int i = 0; i < 100; i++) {
+      TestBean bean = new TestBean();
+      bean.Name.set("Name " + i);
+      bean.Age.set(i + 10);
+      data.add(bean);
+    }
+    table.setValue(data);
+    UiVerticalPanel panel = UiVerticalPanel.of(table);
+    tabPanel.addTab("Table", panel);
   }
 
   private static void createVideoTab(UiTabPanel tabPanel) {
 
-    UiVerticalPanel page = UiVerticalPanel.of();
-    UiMediaSource sourceLq = new UiMediaSource("https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4",
-        UiMediaSource.MIMETYPE_VIDEO_MP4);
-    UiMediaSource sourceHq = new UiMediaSource(
-        "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4", UiMediaSource.MIMETYPE_VIDEO_MP4);
-    UiMediaTrack track = new UiMediaTrack("https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt",
-        UiMediaTrack.KIND_CAPTIONS, "en", "English");
-    UiMedia video = UiMedia.ofVideo(new UiMediaSource[] { sourceLq, sourceHq }, new UiMediaTrack[] { track },
-        "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg");
-    UiMediaPlayer player = UiMediaPlayer.of(video);
-    player.setMedia(video);
-    page.addChild(player);
-    UiTab tab = tabPanel.addChild(page, "Video");
+    Supplier<UiRegularWidget> supplier = () -> {
+      UiVerticalPanel page = UiVerticalPanel.of();
+      UiMediaSource sourceLq = new UiMediaSource(
+          "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4", UiMediaSource.MIMETYPE_VIDEO_MP4);
+      UiMediaSource sourceHq = new UiMediaSource(
+          "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4", UiMediaSource.MIMETYPE_VIDEO_MP4);
+      UiMediaTrack track = new UiMediaTrack("https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt",
+          UiMediaTrack.KIND_CAPTIONS, "en", "English");
+      UiMedia video = UiMedia.ofVideo(new UiMediaSource[] { sourceLq, sourceHq }, new UiMediaTrack[] { track },
+          "https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.jpg");
+      UiMediaPlayer player = UiMediaPlayer.of(video);
+      player.setMedia(video);
+      page.addChild(player);
+      return page;
+    };
+    tabPanel.addTab("Video", supplier);
   }
 
 }

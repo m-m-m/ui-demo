@@ -12,7 +12,7 @@ import javafx.application.Application;
 public class DemoUiFx extends FxApplication {
 
   @Override
-  protected void start() {
+  public void start() {
 
     new DemoUi().run();
   }

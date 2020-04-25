@@ -2,19 +2,23 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.demo.ui.shared;
 
-import io.github.mmm.ui.api.widget.composite.UiTab;
 import io.github.mmm.ui.api.widget.panel.UiFormPanel;
-import io.github.mmm.ui.api.widget.panel.UiTabPanel;
 import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
+import io.github.mmm.ui.api.widget.tab.UiTab;
+import io.github.mmm.ui.api.widget.tab.UiTabPanel;
 import io.github.mmm.ui.api.widget.temporal.UiDateInput;
 import io.github.mmm.ui.api.widget.temporal.UiDateTimeInput;
 import io.github.mmm.ui.api.widget.temporal.UiTimeInput;
 
 /**
- *
+ * Demo for temporal widgets. Currently not working on all platforms. For TeaVM see
  */
 public class TemporalDemo {
 
+  /**
+   * @param tabPanel the {@link UiTabPanel}.
+   * @return the {@link UiTab} with temporal widgets.
+   */
   public static UiTab createTab(UiTabPanel tabPanel) {
 
     UiVerticalPanel page2 = UiVerticalPanel.of();
@@ -24,7 +28,7 @@ public class TemporalDemo {
     UiFormPanel<Void> formPanel = UiFormPanel.of(dateInput, timeInput, dateTimeInput);
 
     page2.addChild(formPanel);
-    return tabPanel.addChild(page2, "Temporals");
+    return tabPanel.addTab("Temporals", page2);
   }
 
 }
