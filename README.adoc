@@ -1,11 +1,11 @@
 image:https://m-m-m.github.io/logo.svg[logo,width="150",link="https://m-m-m.github.io"]
 
-image:https://img.shields.io/github/license/m-m-m/demo-ui.svg?label=License["Apache License, Version 2.0",link=https://github.com/m-m-m/demo-ui/blob/master/LICENSE]
-image:https://travis-ci.org/m-m-m/demo-ui.svg?branch=master["build-status",link="https://travis-ci.org/m-m-m/demo-ui"]
+image:https://img.shields.io/github/license/m-m-m/ui-demo.svg?label=License["Apache License, Version 2.0",link=https://github.com/m-m-m/ui-demo/blob/master/LICENSE]
+image:https://travis-ci.org/m-m-m/ui-demo.svg?branch=master["build-status",link="https://travis-ci.org/m-m-m/ui-demo"]
 
-== mmm-demo-ui
+== mmm-ui-demo
 
-The module `mmm-demo-ui` provides a showcase demonstrating the vision and features of `mmm-ui` and its underlying dependencies (e.g. `mmm-bean`).
+The module `mmm-ui-demo` provides a showcase demonstrating the vision and features of `mmm-ui` and its underlying dependencies (e.g. `mmm-bean`).
 To make it short, have a look at link:shared/src/main/java/io/github/mmm/demo/ui/shared/DemoUi.java[DemoUi] that shows a simple user-interface example that is fully portable.
 Via link:fx/src/main/java/io/github/mmm/demo/ui/fx/DemoUiFx.java[DemoUiFx] you can run this demo as JavaFx desktop application.
 In the same way, link:tvm/src/main/java/io/github/mmm/demo/ui/tvm/DemoUiTvm.java[DemoUiTvm] makes the same demo run in any modern browser.
