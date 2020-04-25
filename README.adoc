@@ -6,6 +6,6 @@ image:https://travis-ci.org/m-m-m/ui-demo.svg?branch=master["build-status",link=
 == mmm-ui-demo
 
 The module `mmm-ui-demo` provides a showcase demonstrating the vision and features of `mmm-ui` and its underlying dependencies (e.g. `mmm-bean`).
-To make it short, have a look at link:shared/src/main/java/io/github/mmm/demo/ui/shared/DemoUi.java[DemoUi] that shows a simple user-interface example that is fully portable.
-Via link:fx/src/main/java/io/github/mmm/demo/ui/fx/DemoUiFx.java[DemoUiFx] you can run this demo as JavaFx desktop application.
-In the same way, link:tvm/src/main/java/io/github/mmm/demo/ui/tvm/DemoUiTvm.java[DemoUiTvm] makes the same demo run in any modern browser.
+To make it short, have a look at link:shared/src/main/java/io/github/mmm/ui/demo/shared/DemoUi.java[DemoUi] that shows a simple user-interface example that is fully portable.
+Via link:fx/src/main/java/io/github/mmm/ui/demo/fx/DemoUiFx.java[DemoUiFx] you can run this demo as JavaFx desktop application.
+In the same way, link:tvm/src/main/java/io/github/mmm/ui/demo/tvm/DemoUiTvm.java[DemoUiTvm] makes the same demo run in any modern browser.

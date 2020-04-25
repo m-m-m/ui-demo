@@ -1,6 +1,6 @@
-package io.github.mmm.demo.ui.tvm;
+package io.github.mmm.ui.demo.tvm;
 
-import io.github.mmm.demo.ui.shared.DemoUi;
+import io.github.mmm.ui.demo.shared.DemoUi;
 import io.github.mmm.ui.tvm.TvmApplication;
 
 /**

@@ -5,12 +5,12 @@
 /**
  * Provides the portable UI of this demo.
  */
-module io.github.mmm.demo.ui.shared {
+module io.github.mmm.ui.demo.shared {
 
   requires transitive io.github.mmm.ui.api.all;
 
   requires transitive io.github.mmm.ui.api.binding;
 
-  exports io.github.mmm.demo.ui.shared;
+  exports io.github.mmm.ui.demo.shared;
 
 }

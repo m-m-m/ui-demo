@@ -3,17 +3,17 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-demo-ui</artifactId>
+    <artifactId>mmm-ui-demo</artifactId>
     <version>${revision}${changelist}</version>
   </parent>
 
-  <artifactId>mmm-demo-ui-fx</artifactId>
+  <artifactId>mmm-ui-demo-fx</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-demo-ui-shared</artifactId>
+      <artifactId>mmm-ui-demo-shared</artifactId>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>

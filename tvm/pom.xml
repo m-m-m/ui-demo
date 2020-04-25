@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
-    <artifactId>mmm-demo-ui</artifactId>
+    <artifactId>mmm-ui-demo</artifactId>
     <version>${revision}${changelist}</version>
   </parent>
 
-  <artifactId>mmm-demo-ui-tvm</artifactId>
+  <artifactId>mmm-ui-demo-tvm</artifactId>
   <packaging>war</packaging>
 
   <properties>
@@ -42,11 +42,7 @@
 
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-demo-ui-shared</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>mmm-bean</artifactId>
+      <artifactId>mmm-ui-demo-shared</artifactId>
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
