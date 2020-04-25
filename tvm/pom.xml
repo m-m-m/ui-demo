@@ -78,7 +78,7 @@
             </goals>
             <configuration>
               <targetDirectory>${project.build.directory}/generated/js/teavm</targetDirectory>
-              <mainClass>io.github.mmm.demo.ui.tvm.DemoUiTvm</mainClass>
+              <mainClass>io.github.mmm.ui.demo.tvm.DemoUiTvm</mainClass>
               <minifying>${tvm.minifying}</minifying>
               <debugInformationGenerated>${tvm.debug.information}</debugInformationGenerated>
               <sourceMapsGenerated>${tvm.source.maps}</sourceMapsGenerated>
