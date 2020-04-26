@@ -5,7 +5,7 @@
 /**
  * Provides the implementation of the UI framework based on JavaFx.
  */
-module io.github.mmm.ui.demo.fx {
+open module io.github.mmm.ui.demo.fx {
 
   requires transitive io.github.mmm.ui.fx.all;
 

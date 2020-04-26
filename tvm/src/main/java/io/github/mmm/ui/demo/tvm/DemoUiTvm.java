@@ -12,7 +12,7 @@ public class DemoUiTvm extends TvmApplication {
   public void start() {
 
     DemoUi app = new DemoUi();
-    app.run();
+    app.start();
   }
 
   /**

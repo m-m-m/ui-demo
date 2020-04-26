@@ -14,7 +14,7 @@ public class DemoUiFx extends FxApplication {
   @Override
   public void start() {
 
-    new DemoUi().run();
+    new DemoUi().start();
   }
 
   /**

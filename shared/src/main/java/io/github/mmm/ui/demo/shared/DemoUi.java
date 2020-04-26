@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 import io.github.mmm.base.placement.Direction;
+import io.github.mmm.ui.api.UiApplication;
 import io.github.mmm.ui.api.attribute.AttributeWriteAutocomplete;
 import io.github.mmm.ui.api.binding.data.UiDataBinding;
 import io.github.mmm.ui.api.datatype.UiPoint;
@@ -53,7 +54,7 @@ import io.github.mmm.ui.api.widget.window.UiWindow;
  * Demo of portable User-Interface with {@code mmm-ui}.
  */
 @SuppressWarnings("unchecked")
-public class DemoUi implements Runnable {
+public class DemoUi implements UiApplication {
 
   private int counter = 1;
 
@@ -68,7 +69,7 @@ public class DemoUi implements Runnable {
   }
 
   @Override
-  public void run() {
+  public void start() {
 
     UiDataBinding binding = new UiDataBinding();
     initMenuBar();
