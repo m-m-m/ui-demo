@@ -2,7 +2,7 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.ui.demo.shared;
 
-import io.github.mmm.ui.api.widget.panel.UiFormPanel;
+import io.github.mmm.ui.api.widget.form.UiFormPanel;
 import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
 import io.github.mmm.ui.api.widget.tab.UiTab;
 import io.github.mmm.ui.api.widget.tab.UiTabPanel;
