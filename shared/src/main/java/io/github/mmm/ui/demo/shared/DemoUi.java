@@ -95,7 +95,14 @@ public class DemoUi implements UiApplication {
       tab3.setVisible(showTab3.isSelected());
     };
     showTab3.addListener(showTab3Listener);
+    UiCheckbox showLogin = UiCheckbox.of("Show Login");
+    showLogin.setId("showLogin");
+    showLogin.setSelected(true);
     UiTextInput textInput = UiTextInput.of("Login");
+    UiValueChangeEventListener showLoginListener = (e) -> {
+      textInput.setVisible(showLogin.isSelected());
+    };
+    showLogin.addListener(showLoginListener);
     textInput.setId("login");
     textInput.setTooltip("Unique identifier of the user for authentication");
     textInput.setAutocomplete(AttributeWriteAutocomplete.AUTOCOMPLETE_USERNAME);
@@ -111,7 +118,7 @@ public class DemoUi implements UiApplication {
     UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum("Time-unit", TimeUnit.class);
     UiIntegerSlider slider = UiIntegerSlider.of("Slider");
     slider.setTextEditable(true);
-    UiFormGroup<Void> formGroupTabs = UiFormGroup.of("Show Tabs", showTab1, showTab3);
+    UiFormGroup<Void> formGroupTabs = UiFormGroup.of("Show Tabs", showTab1, showTab3, showLogin);
     UiFormGroup<Void> formGroupInputs = UiFormGroup.of("Generic Inputs", textInput, passwordInput, confirmPasswordInput,
         textArea, choice, slider);
 

@@ -1,3 +1,9 @@
+.root {
+  -fx-font-family: "Arial";
+}
+.text {
+  -fx-font-smoothing-type: gray;
+}
 *:invalid {
   -fx-border-color: red;
 }
@@ -6,4 +12,7 @@
   -fx-border-color: red;
   -fx-background-color: #FF2020A0;
   -fx-wrap-text: true;
+}
+.label.mandatory {
+  -fx-font-weight: bold;
 }
