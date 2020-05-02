@@ -2,19 +2,19 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.ui.demo.fx;
 
-import io.github.mmm.ui.demo.shared.DemoUi;
+import io.github.mmm.ui.demo.shared.UiDemo;
 import io.github.mmm.ui.fx.FxApplication;
 import javafx.application.Application;
 
 /**
- * {@link FxApplication} for {@link DemoUi} to run in JavaFx.
+ * {@link FxApplication} for {@link UiDemo} to run in JavaFx.
  */
-public class DemoUiFx extends FxApplication {
+public class UiDemoFx extends FxApplication {
 
   @Override
   public void start() {
 
-    new DemoUi().start();
+    new UiDemo().start();
   }
 
   /**
@@ -22,7 +22,7 @@ public class DemoUiFx extends FxApplication {
    */
   public static void main(String[] args) {
 
-    Application.launch(DemoUiFx.class, args);
+    Application.launch(UiDemoFx.class, args);
   }
 
 }

@@ -54,7 +54,7 @@ import io.github.mmm.ui.api.widget.window.UiWindow;
  * Demo of portable User-Interface with {@code mmm-ui}.
  */
 @SuppressWarnings("unchecked")
-public class DemoUi implements UiApplication {
+public class UiDemo implements UiApplication {
 
   private int counter = 1;
 
@@ -63,7 +63,7 @@ public class DemoUi implements UiApplication {
   /**
    * The constructor.
    */
-  public DemoUi() {
+  public UiDemo() {
 
     super();
   }
