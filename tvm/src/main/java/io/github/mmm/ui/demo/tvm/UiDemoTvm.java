@@ -1,18 +1,18 @@
 package io.github.mmm.ui.demo.tvm;
 
-import io.github.mmm.ui.demo.shared.UiDemo;
+import io.github.mmm.ui.api.controller.UiNavigationManager;
+import io.github.mmm.ui.spi.controller.AbstractUiNavigationManager;
 import io.github.mmm.ui.tvm.TvmApplication;
 
 /**
- * TeaVM client app to run {@link UiDemo} in the browser.
+ * TeaVM client app to run this UI demo in the browser with TeaVM.
  */
 public class UiDemoTvm extends TvmApplication {
 
   @Override
   public void start() {
 
-    UiDemo app = new UiDemo();
-    app.start();
+    ((AbstractUiNavigationManager) UiNavigationManager.get()).init();
   }
 
   /**

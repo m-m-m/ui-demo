@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.github.m-m-m</groupId>
@@ -16,16 +17,16 @@
     <revision>1.0.0</revision>
     <changelist>-SNAPSHOT</changelist>
     <mmm.repository>demo-ui</mmm.repository>
-    <teavm.version>0.6.1</teavm.version>
+    <teavm.version>0.7.0-dev-1090</teavm.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-  
+
   <modules>
     <module>shared</module>
     <module>fx</module>
     <module>tvm</module>
   </modules>
-  
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -73,10 +74,28 @@
         <version>${teavm.version}</version>
       </dependency>
       <dependency>
+        <groupId>org.teavm</groupId>
+        <artifactId>teavm-extras-slf4j</artifactId>
+        <version>${teavm.version}</version>
+      </dependency>
+      <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
         <version>3.1.0</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>teavm-dev</id>
+      <url>https://dl.bintray.com/konsoletyper/teavm</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>teavm-dev</id>
+      <url>https://dl.bintray.com/konsoletyper/teavm</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>

@@ -5,7 +5,6 @@ package io.github.mmm.ui.demo.shared;
 import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
 import io.github.mmm.bean.Name;
-import io.github.mmm.property.PropertyMetadataType;
 import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 
@@ -49,8 +48,8 @@ public class TestBean extends Bean {
   public TestBean(AbstractBean writable, boolean dynamic) {
 
     super(writable, dynamic);
-    this.Name = add(new StringProperty("Name", new PropertyMetadataType<>(new ValidatorMandatory())));
-    this.Age = add(new IntegerProperty("Age"));
+    this.Name = add().newString().withValidator().mandatory().and().build("Name");
+    this.Age = add().newInteger("Age");
   }
 
   @Override

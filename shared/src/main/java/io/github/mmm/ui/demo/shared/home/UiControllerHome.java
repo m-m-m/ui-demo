@@ -1,6 +1,6 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.ui.demo.shared;
+package io.github.mmm.ui.demo.shared.home;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +8,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
 import io.github.mmm.base.placement.Direction;
-import io.github.mmm.ui.api.UiApplication;
 import io.github.mmm.ui.api.attribute.AttributeWriteAutocomplete;
 import io.github.mmm.ui.api.binding.data.UiDataBinding;
+import io.github.mmm.ui.api.controller.AbstractUiController;
+import io.github.mmm.ui.api.controller.AbstractUiControllerMain;
+import io.github.mmm.ui.api.controller.UiControllerSlot;
+import io.github.mmm.ui.api.controller.UiPlace;
 import io.github.mmm.ui.api.datatype.UiPoint;
 import io.github.mmm.ui.api.datatype.UiSeverity;
 import io.github.mmm.ui.api.datatype.chart.UiDataSeriesDouble;
@@ -49,30 +52,51 @@ import io.github.mmm.ui.api.widget.tab.UiTabPanel;
 import io.github.mmm.ui.api.widget.window.UiMainWindow;
 import io.github.mmm.ui.api.widget.window.UiPopup;
 import io.github.mmm.ui.api.widget.window.UiWindow;
+import io.github.mmm.ui.demo.shared.TestBean;
+import io.github.mmm.validation.main.ValidatorMandatory;
 
 /**
- * Demo of portable User-Interface with {@code mmm-ui}.
+ * {@link AbstractUiController Controller} for home dialog.
  */
-@SuppressWarnings("unchecked")
-public class UiDemo implements UiApplication {
+public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
 
-  private int counter = 1;
+  private UiMenuBar menuBar;
 
   private UiPopup popup;
+
+  private int counter = 1;
 
   /**
    * The constructor.
    */
-  public UiDemo() {
+  public UiControllerHome() {
 
     super();
   }
 
   @Override
-  public void start() {
+  public String getId() {
 
-    UiDataBinding binding = new UiDataBinding();
+    return ID_HOME;
+  }
+
+  @Override
+  public String getTitle() {
+
+    return "Demo of mmm-ui";
+  }
+
+  @Override
+  protected UiControllerSlot doShow(UiPlace newPlace, UiControllerSlot newSlot) {
+
+    return UiControllerSlot.SLOT_ROOT;
+  }
+
+  @Override
+  protected UiTabPanel createView() {
+
     initMenuBar();
+    UiDataBinding binding = new UiDataBinding();
     UiTabPanel tabPanel = UiTabPanel.of();
     UiTab tab1 = createWindowTab(tabPanel);
     UiVerticalPanel page2 = UiVerticalPanel.of();
@@ -109,10 +133,7 @@ public class UiDemo implements UiApplication {
     textInput.setValidator(ValidatorMandatory.getInstance());
     UiPasswordInput passwordInput = UiPasswordInput.ofNew("Password");
     UiPasswordInput confirmPasswordInput;
-    // confirmPasswordInput = passwordInput.createConfirmationInput();
-    confirmPasswordInput = UiPasswordInput.of("Confirm " + passwordInput.getName(),
-        AttributeWriteAutocomplete.AUTOCOMPLETE_NEW_PASSWORD);
-    confirmPasswordInput.setValidator(new ValidatorPasswordConfirmation(() -> passwordInput.getValue()));
+    confirmPasswordInput = passwordInput.createConfirmationInput();
 
     UiTextArea textArea = UiTextArea.of("Comment");
     UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum("Time-unit", TimeUnit.class);
@@ -143,9 +164,7 @@ public class UiDemo implements UiApplication {
     createChartTab(tabPanel);
     createVideoTab(tabPanel);
     createTableTab(tabPanel);
-    UiMainWindow mainWindow = UiMainWindow.get();
-    mainWindow.addChild(tabPanel);
-    mainWindow.setVisible(true);
+    return tabPanel;
   }
 
   private UiTab createWindowTab(UiTabPanel tabPanel) {
@@ -192,19 +211,7 @@ public class UiDemo implements UiApplication {
     return tab3;
   }
 
-  private void initMenuBar() {
-
-    UiMenuBar menuBar = UiMenuBar.get();
-    UiMenu fileMenu = menuBar.addMenu("File");
-    fileMenu.addMenuItem("Exit", (e) -> {
-      UiMainWindow.get().setVisible(false);
-    });
-    UiMenu optionsMenu = menuBar.addMenu("Options");
-    optionsMenu.addMenuItem("Theme", (e) -> {
-      System.out.println("Selected Theme from Options menu");
-    });
-  }
-
+  @SuppressWarnings("unchecked")
   private static void createChartTab(UiTabPanel tabPanel) {
 
     UiVerticalPanel panel = UiVerticalPanel.of();
@@ -267,6 +274,22 @@ public class UiDemo implements UiApplication {
       return page;
     };
     tabPanel.addTab("Video", supplier);
+  }
+
+  private void initMenuBar() {
+
+    if (this.menuBar != null) {
+      return;
+    }
+    this.menuBar = UiMenuBar.get();
+    UiMenu fileMenu = this.menuBar.addMenu("File");
+    fileMenu.addMenuItem("Exit", (e) -> {
+      UiMainWindow.get().setVisible(false);
+    });
+    UiMenu optionsMenu = this.menuBar.addMenu("Options");
+    optionsMenu.addMenuItem("Theme", (e) -> {
+      System.out.println("Selected Theme from Options menu");
+    });
   }
 
 }
