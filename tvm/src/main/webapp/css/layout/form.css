@@ -1,0 +1,17 @@
+/* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * You may explicitly copy and modify this stylesheet and include it into your project. */
+ui-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5em;
+}
+ui-input>label:after {
+  content: ':';
+}
+ui-input>label.mandatory:after {
+  content: '*:';
+}
+ui-slider>input[type=range] {
+  flex: 1 1 0;
+}

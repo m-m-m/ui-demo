@@ -8,8 +8,6 @@ ui-input>label {
   text-align: right;
   font-weight: bold;
   white-space: nowrap;
-}
-ui-input>label {
   margin-left: 0.75em;
   margin-right: 0.5em;
   padding-top: 0.1em;
