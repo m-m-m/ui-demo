@@ -37,7 +37,6 @@ import io.github.mmm.ui.api.widget.data.UiDataTable;
 import io.github.mmm.ui.api.widget.form.UiFormGroup;
 import io.github.mmm.ui.api.widget.form.UiFormPanel;
 import io.github.mmm.ui.api.widget.input.UiCheckbox;
-import io.github.mmm.ui.api.widget.input.UiIntegerSlider;
 import io.github.mmm.ui.api.widget.input.UiPasswordInput;
 import io.github.mmm.ui.api.widget.input.UiRadioChoice;
 import io.github.mmm.ui.api.widget.input.UiTextArea;
@@ -45,7 +44,9 @@ import io.github.mmm.ui.api.widget.input.UiTextInput;
 import io.github.mmm.ui.api.widget.media.UiMediaPlayer;
 import io.github.mmm.ui.api.widget.menu.UiMenu;
 import io.github.mmm.ui.api.widget.menu.UiMenuBar;
+import io.github.mmm.ui.api.widget.number.UiIntegerSlider;
 import io.github.mmm.ui.api.widget.panel.UiButtonPanel;
+import io.github.mmm.ui.api.widget.panel.UiScrollPanel;
 import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
 import io.github.mmm.ui.api.widget.tab.UiTab;
 import io.github.mmm.ui.api.widget.tab.UiTabPanel;
@@ -137,6 +138,7 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
 
     UiTextArea textArea = UiTextArea.of("Comment");
     UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum("Time-unit", TimeUnit.class);
+    choice.setTooltip("Choose a time-unit from the options of the enum.");
     UiIntegerSlider slider = UiIntegerSlider.of("Slider");
     slider.setTextEditable(true);
     UiFormGroup<Void> formGroupTabs = UiFormGroup.of("Show Tabs", showTab1, showTab3, showLogin);
@@ -234,7 +236,8 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
         UiDataSet.of("Square", new UiPoint[] { new UiPoint(1, 1), new UiPoint(2, 4), new UiPoint(3, 9),
         new UiPoint(4, 16), new UiPoint(5, 25) }));
     panel.addChild(lineChart);
-    tabPanel.addTab("Chart", panel);
+    UiScrollPanel scrollPanel = UiScrollPanel.of(panel);
+    tabPanel.addTab("Chart", scrollPanel);
   }
 
   private static void createTableTab(UiTabPanel tabPanel) {

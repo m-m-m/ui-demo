@@ -5,6 +5,8 @@
 
 /**
  * Provides the portable UI of this demo.
+ * 
+ * @provides io.github.mmm.ui.api.controller.UiController
  */
 @SuppressWarnings("rawtypes") //
 module io.github.mmm.ui.demo.shared {
