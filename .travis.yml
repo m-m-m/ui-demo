@@ -6,8 +6,6 @@ env:
   - secure: hGMt4xHxG3dOphrQvKlAXyYpnSGA+72ihHH5VIcoFSUhyleo6Qo5kraN7IASIn6f+poWcbz791478QjlsXCwhwGpUTowpZTU1c9M5WxdyAOE8HVICa2pa+m16rUBxtBxzvk2Wu6pzzkOHX+KR3AiZHsMZnMqA/t0w4pf1UhsOfxPX0AcEiPbFdsG+9T/i1q6UgoC+lwILuLXPDCJNgOzZ2RsivgiEJ7Um4e3oIb3uLV6sL0OTcdXrSKerolERJMJdAd6TudUAaEOgZ69n4V3qmly46ca6KEx4N+eByM9awHJj03GglT9bU/LAzT5cmndbKbvQlBFyXClKw6ZcB8dDYsuAFGazYxXsW14JsxMmC4Pv62VeDILqCFuvFbwppJR8Y4cQNhe++hrAXftkTo6CXjETWOmr8Lb1e6yBhMgF9uf7A4tTd0H9qCmcsnJh4HR3XG524uGcixWQe9Q5x0UcLWTzDfb97GJj7TZfNJ9rXhfY1r0SG81Hl/NhMtlspHO+5dJq7XLmB/pctigfPRfWBNpKNVnwY0KWsH0+BKaFj45ugxwDqzd+FRM2cI9W6Fn/fXS9j2JvMMclsaM+mmwxgktwPJxJEr6Y3ohQMF+Au7j7I+5cPiPECv/EIMc0bQKQYt92xB8g09UimanC6nl0ri1/LgkOBJrG1ltBXM42m8=
 install: skip
 script: mvn --settings .mvn/settings.xml install && ([[ $TRAVIS_BRANCH != "master" ]] || mvn --settings .mvn/settings.xml -DskipTests=true deploy)
-cache:
-  directories: "$HOME/.m2"
 branches:
   except: gh-pages
 notifications:
