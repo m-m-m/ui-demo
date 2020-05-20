@@ -16,3 +16,11 @@
 .label.mandatory {
   -fx-font-weight: bold;
 }
+.ui-buttons {
+  -fx-alignment: center;
+  -fx-padding: 0.5em;
+  -fx-spacing: 1em;
+}
+.ui-button {
+  -fx-min-width: 10em;
+}
