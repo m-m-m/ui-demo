@@ -140,13 +140,14 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
     UiTextArea textArea = UiTextArea.of("Comment");
     UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum("Time-unit", TimeUnit.class);
     choice.setTooltip("Choose a time-unit from the options of the enum.");
+    UiRadioChoice<Boolean> yesNoWidget = UiRadioChoice.of("label", Boolean.TRUE, Boolean.FALSE);
     UiIntegerSlider slider = UiIntegerSlider.of("Slider");
     slider.setTextEditable(true);
     UiFormGroup<Void> formGroupTabs = UiFormGroup.of("Show Tabs", showTab1, showTab3, showLogin);
     UiFormGroup<Void> formGroupInputs = UiFormGroup.of("Generic Inputs", textInput, passwordInput, confirmPasswordInput,
         textArea, choice, slider);
 
-    UiFormPanel<Void> formPanel = UiFormPanel.of(formGroupTabs, formGroupInputs);
+    UiFormPanel<Void> formPanel = UiFormPanel.of(formGroupTabs, yesNoWidget, formGroupInputs);
     page2.addChild(formPanel);
     UiActionSubmit submit = e -> {
       formPanel.validate();
