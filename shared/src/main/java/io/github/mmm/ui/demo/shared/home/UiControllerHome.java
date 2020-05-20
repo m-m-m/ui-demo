@@ -25,6 +25,7 @@ import io.github.mmm.ui.api.event.UiValueChangeEventListener;
 import io.github.mmm.ui.api.event.action.UiActionCancel;
 import io.github.mmm.ui.api.event.action.UiActionClose;
 import io.github.mmm.ui.api.event.action.UiActionDelete;
+import io.github.mmm.ui.api.event.action.UiActionReset;
 import io.github.mmm.ui.api.event.action.UiActionSubmit;
 import io.github.mmm.ui.api.notifier.UiNotifier;
 import io.github.mmm.ui.api.widget.UiLabel;
@@ -151,6 +152,8 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
       formPanel.validate();
     };
     UiButton submitButton = UiButton.of(submit);
+    UiActionReset reset = UiActionReset.of(formPanel);
+    UiButton resetButton = UiButton.of(reset);
     UiActionDelete delete = e -> {
       System.out.println("Delete");
     };
@@ -160,7 +163,7 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
     };
     UiButton cancelButton = UiButton.of(cancel);
     cancelButton.getStyles().add("abort");
-    UiButtonPanel buttonPanel = UiButtonPanel.of(submitButton, deleteButton, cancelButton);
+    UiButtonPanel buttonPanel = UiButtonPanel.of(submitButton, resetButton, deleteButton, cancelButton);
     page2.addChild(buttonPanel);
     // TemporalDemo.createTab(tabPanel);
     createChartTab(tabPanel);
