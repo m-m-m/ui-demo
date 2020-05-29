@@ -30,3 +30,7 @@
 .ui-form > .ui-input {
    -fx-padding: 0.25em 1em 0.25em 1em
 }
+.ui-media-controls {
+  -fx-spacing: 0.5em;
+  -fx-padding: 0.5em 0.5em 0.5em 0.25em
+}

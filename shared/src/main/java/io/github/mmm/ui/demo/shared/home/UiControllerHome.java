@@ -47,6 +47,8 @@ import io.github.mmm.ui.api.widget.menu.UiMenu;
 import io.github.mmm.ui.api.widget.menu.UiMenuBar;
 import io.github.mmm.ui.api.widget.number.UiIntegerSlider;
 import io.github.mmm.ui.api.widget.panel.UiButtonPanel;
+import io.github.mmm.ui.api.widget.panel.UiGridPanel;
+import io.github.mmm.ui.api.widget.panel.UiGridRow;
 import io.github.mmm.ui.api.widget.panel.UiScrollPanel;
 import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
 import io.github.mmm.ui.api.widget.tab.UiTab;
@@ -141,6 +143,7 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
     UiRadioChoice<TimeUnit> choice = UiRadioChoice.ofEnum("Time-unit", TimeUnit.class);
     choice.setTooltip("Choose a time-unit from the options of the enum.");
     UiRadioChoice<Boolean> yesNoWidget = UiRadioChoice.of("label", Boolean.TRUE, Boolean.FALSE);
+    yesNoWidget.setTooltip("Choose yes or no");
     UiIntegerSlider slider = UiIntegerSlider.of("Slider");
     slider.setTextEditable(true);
     UiFormGroup<Void> formGroupTabs = UiFormGroup.of("Show Tabs", showTab1, showTab3, showLogin);
@@ -167,10 +170,23 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
     UiButtonPanel buttonPanel = UiButtonPanel.of(submitButton, resetButton, deleteButton, cancelButton);
     page2.addChild(buttonPanel);
     // TemporalDemo.createTab(tabPanel);
+    createGridTab(tabPanel);
     createChartTab(tabPanel);
     createVideoTab(tabPanel);
     createTableTab(tabPanel);
     return tabPanel;
+  }
+
+  private UiTab createGridTab(UiTabPanel tabPanel) {
+
+    UiGridPanel grid = UiGridPanel.of();
+    grid.addRow(UiLabel.of("A1 text"), UiLabel.of("A2 text"), UiLabel.of("A3 with some text"));
+    UiGridRow row3 = grid.addRow();
+    row3.setChild(UiLabel.of("C1-3 with very long text showing a span over all three columns."), 0, 3);
+    UiGridRow row2 = grid.addRow(1);
+    row2.setChild(UiLabel.of("B1 with text"), 0);
+    row2.setChild(UiLabel.of("B2-3 with some text"), 1, 2);
+    return tabPanel.addTab("Grid", grid);
   }
 
   private UiTab createWindowTab(UiTabPanel tabPanel) {
@@ -187,11 +203,15 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
       buttonPanel.addChild(UiButton.of(action));
       window.getPosition().setX(200 + this.counter * 20);
       window.getPosition().setY(200 + this.counter * 20);
+      window.getSize().setWidthInPixel(200);
+      window.getSize().setHeightInPixel(200);
       window.open();
     }));
     page1.addChild(UiButton.of("Open Popup", (e) -> {
       if (this.popup == null) {
         this.popup = UiNotifier.get().showPopupOk("This is a test\n<br><blink>blink</blink>", UiSeverity.INFORMATION);
+        this.popup.getSize().setWidthInPixel(200);
+        this.popup.getSize().setHeightInPixel(200);
       } else {
         this.popup.open();
       }
