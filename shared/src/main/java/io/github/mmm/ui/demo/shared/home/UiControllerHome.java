@@ -182,10 +182,16 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
     UiGridPanel grid = UiGridPanel.of();
     grid.addRow(UiLabel.of("A1 text"), UiLabel.of("A2 text"), UiLabel.of("A3 with some text"));
     UiGridRow row3 = grid.addRow();
-    row3.setChild(UiLabel.of("C1-3 with very long text showing a span over all three columns."), 0, 3);
+    row3.addChild(UiLabel.of("C1-3 with very long text showing a span over all three columns."), -1, 3);
     UiGridRow row2 = grid.addRow(1);
-    row2.setChild(UiLabel.of("B1 with text"), 0);
-    row2.setChild(UiLabel.of("B2-3 with some text"), 1, 2);
+    row2.addChild(UiLabel.of("B1 with text"));
+    row2.addChild(UiLabel.of("B2-3 with some text"), -1, 2);
+    UiGridRow row4 = grid.addRow();
+    row4.addChild(UiLabel.of("D1 with row-span."), -1, 1, 2);
+    row4.addChild(UiLabel.of("D2 with col-span."), -1, 2);
+    UiGridRow row5 = grid.addRow();
+    row5.addChild(UiLabel.of("E2 with col-span."), -1, 2);
+
     return tabPanel.addTab("Grid", grid);
   }
 
