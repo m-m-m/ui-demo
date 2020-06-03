@@ -316,11 +316,14 @@ public class UiControllerHome extends AbstractUiControllerMain<UiTabPanel> {
     }
     this.menuBar = UiMenuBar.get();
     UiMenu fileMenu = this.menuBar.addMenu("File");
-    fileMenu.addMenuItem("Exit", (e) -> {
+    fileMenu.addItem("About", e -> {
+    });
+    fileMenu.addSeparator();
+    fileMenu.addItem("Exit", e -> {
       UiMainWindow.get().setVisible(false);
     });
     UiMenu optionsMenu = this.menuBar.addMenu("Options");
-    optionsMenu.addMenuItem("Theme", (e) -> {
+    optionsMenu.addItem("Theme", e -> {
       System.out.println("Selected Theme from Options menu");
     });
   }
