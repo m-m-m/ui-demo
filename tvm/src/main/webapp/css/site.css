@@ -154,3 +154,10 @@ ui-tabpanel>ui-tabcontent {
   background: var(--col-active);
   padding: 0.5em;
 }
+ui-content>* {
+  float: left;
+  display: block;
+}
+ui-content>aside {
+  margin-right: 1em;
+}

@@ -15,5 +15,9 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>mmm-ui-api-all</artifactId>
     </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>mmm-ui-spi-controller</artifactId>
+    </dependency>
   </dependencies>
 </project>
