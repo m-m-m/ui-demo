@@ -2,8 +2,12 @@ io.github.mmm.ui.demo.shared.place.content.ContentController
 io.github.mmm.ui.demo.shared.place.content.chart.BarChartController
 io.github.mmm.ui.demo.shared.place.content.chart.LineChartController
 io.github.mmm.ui.demo.shared.place.content.chart.PieChartController
-io.github.mmm.ui.demo.shared.place.content.input.InputsController
-io.github.mmm.ui.demo.shared.place.content.window.WindowsController
+io.github.mmm.ui.demo.shared.place.content.form.validation.ValidationController
+io.github.mmm.ui.demo.shared.place.content.layout.grid.GridPanelController
+io.github.mmm.ui.demo.shared.place.content.layout.scroll.ScrollPanelController
+io.github.mmm.ui.demo.shared.place.content.widget.data.DataTableController
+io.github.mmm.ui.demo.shared.place.content.widget.input.InputsController
+io.github.mmm.ui.demo.shared.place.content.widget.window.WindowsController
 io.github.mmm.ui.demo.shared.place.home.HomeController
 io.github.mmm.ui.demo.shared.place.navigation.NavigationController
 io.github.mmm.ui.demo.shared.place.page.PageController

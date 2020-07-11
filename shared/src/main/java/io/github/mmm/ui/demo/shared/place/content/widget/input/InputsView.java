@@ -1,20 +1,23 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.ui.demo.shared.place.content.input;
+package io.github.mmm.ui.demo.shared.place.content.widget.input;
 
 import io.github.mmm.base.range.RangeType;
-import io.github.mmm.ui.api.widget.custom.form.UiCustomFormPanel;
+import io.github.mmm.ui.api.widget.form.UiCustomFormPanel;
 import io.github.mmm.ui.api.widget.form.UiFormGroup;
+import io.github.mmm.ui.api.widget.input.UiComboBox;
 import io.github.mmm.ui.api.widget.input.UiPasswordInput;
+import io.github.mmm.ui.api.widget.input.UiRadioChoice;
 import io.github.mmm.ui.api.widget.input.UiTextArea;
 import io.github.mmm.ui.api.widget.input.UiTextInput;
 import io.github.mmm.ui.api.widget.number.UiDoubleInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerSlider;
+import io.github.mmm.ui.demo.shared.Fruit;
 import io.github.mmm.validation.main.ValidatorRange;
 
 /**
- * View of {@link InputsController}.
+ * View of {@link DataTableController}.
  */
 public class InputsView extends UiCustomFormPanel<Void> {
 
@@ -28,14 +31,15 @@ public class InputsView extends UiCustomFormPanel<Void> {
     basic.addChild(UiTextInput.of("TextInput"));
     basic.addChild(UiPasswordInput.ofOff("PasswordInput"));
     basic.addChild(UiTextArea.of("TextArea"));
+    basic.addChild(UiComboBox.ofEnum("ComboBox", Fruit.class));
+    basic.addChild(UiRadioChoice.ofEnum("RadioChoice", Fruit.class));
     this.delegate.addChild(basic);
     UiFormGroup<Void> numeric = UiFormGroup.of("Numeric Inputs");
     UiIntegerInput integerInput = UiIntegerInput.of("IntegerInput");
-    ValidatorRange<Integer> validator = new ValidatorRange<>(new RangeType<>(-10, 10));
-    integerInput.setValidator(validator);
     numeric.addChild(integerInput);
     UiIntegerSlider integerSlider = UiIntegerSlider.of("IntegerSlider");
-    integerSlider.setValidator(validator);
+    integerSlider.getRange().setMin(-10);
+    integerSlider.getRange().setMax(10);
     numeric.addChild(integerSlider);
     UiDoubleInput doubleInput = UiDoubleInput.of("DoubleInput");
     ValidatorRange<Double> validatorDouble = new ValidatorRange<>(new RangeType<>(-1.0, 1.0));

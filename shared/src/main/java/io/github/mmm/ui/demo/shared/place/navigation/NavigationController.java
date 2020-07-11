@@ -8,8 +8,12 @@ import io.github.mmm.ui.api.widget.menu.UiNavigationBar;
 import io.github.mmm.ui.demo.shared.place.content.chart.BarChartController;
 import io.github.mmm.ui.demo.shared.place.content.chart.LineChartController;
 import io.github.mmm.ui.demo.shared.place.content.chart.PieChartController;
-import io.github.mmm.ui.demo.shared.place.content.input.InputsController;
-import io.github.mmm.ui.demo.shared.place.content.window.WindowsController;
+import io.github.mmm.ui.demo.shared.place.content.form.validation.ValidationController;
+import io.github.mmm.ui.demo.shared.place.content.layout.grid.GridPanelController;
+import io.github.mmm.ui.demo.shared.place.content.layout.scroll.ScrollPanelController;
+import io.github.mmm.ui.demo.shared.place.content.widget.data.DataTableController;
+import io.github.mmm.ui.demo.shared.place.content.widget.input.InputsController;
+import io.github.mmm.ui.demo.shared.place.content.widget.window.WindowsController;
 import io.github.mmm.ui.spi.controller.AbstractUiController;
 import io.github.mmm.ui.spi.controller.AbstractUiControllerNavigation;
 
@@ -30,14 +34,46 @@ public class NavigationController extends AbstractUiControllerNavigation<UiNavig
   protected UiNavigationBar createView() {
 
     UiNavigationBar view = UiNavigationBar.of();
-    UiMenu widgetsMenu = view.addMenu("Widgets");
-    widgetsMenu.addItem(UiActionNavigate.ofId(InputsController.ID));
-    widgetsMenu.addItem(UiActionNavigate.ofId(WindowsController.ID));
-    UiMenu chartsMenu = view.addMenu("Charts");
-    chartsMenu.addItem(UiActionNavigate.ofId(PieChartController.ID));
-    chartsMenu.addItem(UiActionNavigate.ofId(BarChartController.ID));
-    chartsMenu.addItem(UiActionNavigate.ofId(LineChartController.ID));
+    addBasicWidgets(view);
+    addDataWidgets(view);
+    addForms(view);
+    addLayouts(view);
+    addCharts(view);
     return view;
+  }
+
+  private void addCharts(UiNavigationBar view) {
+
+    UiMenu menu = view.addMenu("Charts");
+    menu.addItem(UiActionNavigate.ofId(PieChartController.ID));
+    menu.addItem(UiActionNavigate.ofId(BarChartController.ID));
+    menu.addItem(UiActionNavigate.ofId(LineChartController.ID));
+  }
+
+  private void addLayouts(UiNavigationBar view) {
+
+    UiMenu menu = view.addMenu("Layouts");
+    menu.addItem(UiActionNavigate.ofId(ScrollPanelController.ID));
+    menu.addItem(UiActionNavigate.ofId(GridPanelController.ID));
+  }
+
+  private void addForms(UiNavigationBar view) {
+
+    UiMenu menu = view.addMenu("Forms");
+    menu.addItem(UiActionNavigate.ofId(ValidationController.ID));
+  }
+
+  private void addBasicWidgets(UiNavigationBar view) {
+
+    UiMenu menu = view.addMenu("Basic Widgets");
+    menu.addItem(UiActionNavigate.ofId(InputsController.ID));
+    menu.addItem(UiActionNavigate.ofId(WindowsController.ID));
+  }
+
+  private void addDataWidgets(UiNavigationBar view) {
+
+    UiMenu menu = view.addMenu("Data Widgets");
+    menu.addItem(UiActionNavigate.ofId(DataTableController.ID));
   }
 
 }

@@ -154,10 +154,28 @@ ui-tabpanel>ui-tabcontent {
   background: var(--col-active);
   padding: 0.5em;
 }
+ui-content {
+  white-space: nowrap;
+}
 ui-content>* {
-  float: left;
-  display: block;
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
 }
 ui-content>aside {
   margin-right: 1em;
+}
+ui-content>main {
+  width: 91.5%;
+}
+tbody {
+  counter-reset: rowNumber;
+}
+tbody tr {
+  counter-increment: rowNumber;
+}
+tbody>tr>td.rownum::before {
+  content: counter(rowNumber, decimal-leading-zero);
+  min-width: 1em;
+  margin-right: 0.5em;
 }

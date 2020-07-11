@@ -30,7 +30,21 @@
 .ui-form > .ui-input {
    -fx-padding: 0.25em 1em 0.25em 1em;
 }
+.ui-input .slider {
+  -fx-padding: 0 1em 0 1em;
+}
 .ui-media-controls {
   -fx-spacing: 0.5em;
   -fx-padding: 0.5em 0.5em 0.5em 0.25em;
+}
+.grid-borders {
+  -fx-background-color: black, white;
+  -fx-padding: 10;
+  -fx-vgap: 1;
+  -fx-hgap: 1;
+}
+.grid-borders > * {
+  -fx-background-color: black, white;
+  -fx-border-color: dimgray;
+  -fx-background-insets: 0, 1;
 }

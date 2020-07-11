@@ -1,22 +1,22 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.ui.demo.shared.place.content.input;
+package io.github.mmm.ui.demo.shared.place.content.widget.data;
 
 import io.github.mmm.ui.demo.shared.place.content.TabController;
 import io.github.mmm.ui.spi.controller.AbstractUiController;
 
 /**
- * {@link AbstractUiController Controller} for home dialog.
+ * {@link AbstractUiController Controller} for {@link DataTableView}.
  */
-public class InputsController extends TabController<InputsView> {
+public class DataTableController extends TabController<DataTableView> {
 
   /** @see #getId() */
-  public static final String ID = "Inputs";
+  public static final String ID = "DataTable";
 
   /**
    * The constructor.
    */
-  public InputsController() {
+  public DataTableController() {
 
     super();
   }
@@ -28,9 +28,9 @@ public class InputsController extends TabController<InputsView> {
   }
 
   @Override
-  protected InputsView createView() {
+  protected DataTableView createView() {
 
-    return new InputsView();
+    return new DataTableView();
   }
 
 }

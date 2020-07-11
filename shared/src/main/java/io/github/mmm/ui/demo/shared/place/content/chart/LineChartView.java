@@ -6,7 +6,7 @@ import io.github.mmm.base.placement.Direction;
 import io.github.mmm.ui.api.datatype.UiPoint;
 import io.github.mmm.ui.api.datatype.chart.UiDataSet;
 import io.github.mmm.ui.api.widget.chart.UiLineChart;
-import io.github.mmm.ui.api.widget.custom.panel.UiCustomVerticalPanel;
+import io.github.mmm.ui.api.widget.panel.UiCustomVerticalPanel;
 
 /**
  * {@link io.github.mmm.ui.api.controller.UiController#getView() View} of {@link LineChartController}.

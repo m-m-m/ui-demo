@@ -60,9 +60,6 @@ public class ContentController extends AbstractUiControllerContent<UiTabPanel> {
       }
       if (tab == null) {
         String text = UiLocalizer.get().localize(slotId);
-        if (text == null) {
-          text = slotId;
-        }
         tab = tabPanel.addTab(text, child);
         tab.setId(slotId);
         tab.setClosable(true);

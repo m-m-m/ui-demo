@@ -1,22 +1,22 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.ui.demo.shared.place.content.window;
+package io.github.mmm.ui.demo.shared.place.content.form.validation;
 
 import io.github.mmm.ui.demo.shared.place.content.TabController;
 import io.github.mmm.ui.spi.controller.AbstractUiController;
 
 /**
- * {@link AbstractUiController Controller} for home dialog.
+ * {@link AbstractUiController Controller} for {@link ValidationView}.
  */
-public class WindowsController extends TabController<WindowsView> {
+public class ValidationController extends TabController<ValidationView> {
 
   /** @see #getId() */
-  public static final String ID = "Windows";
+  public static final String ID = "Validation";
 
   /**
    * The constructor.
    */
-  public WindowsController() {
+  public ValidationController() {
 
     super();
   }
@@ -28,9 +28,9 @@ public class WindowsController extends TabController<WindowsView> {
   }
 
   @Override
-  protected WindowsView createView() {
+  protected ValidationView createView() {
 
-    return new WindowsView();
+    return new ValidationView();
   }
 
 }

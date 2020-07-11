@@ -1,14 +1,14 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.ui.demo.shared.place.content.window;
+package io.github.mmm.ui.demo.shared.place.content.widget.window;
 
 import io.github.mmm.ui.api.datatype.UiSeverity;
 import io.github.mmm.ui.api.event.action.UiActionClose;
 import io.github.mmm.ui.api.notifier.UiNotifier;
 import io.github.mmm.ui.api.widget.UiText;
 import io.github.mmm.ui.api.widget.button.UiButton;
-import io.github.mmm.ui.api.widget.custom.panel.UiCustomVerticalPanel;
 import io.github.mmm.ui.api.widget.panel.UiButtonPanel;
+import io.github.mmm.ui.api.widget.panel.UiCustomVerticalPanel;
 import io.github.mmm.ui.api.widget.window.UiPopup;
 import io.github.mmm.ui.api.widget.window.UiWindow;
 
