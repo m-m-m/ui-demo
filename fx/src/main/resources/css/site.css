@@ -1,3 +1,6 @@
+* {
+  -ui-border-radius: 5px;
+}
 .root {
   -fx-font-family: "Arial";
 }
@@ -32,6 +35,25 @@
 }
 .ui-input .slider {
   -fx-padding: 0 1em 0 1em;
+}
+.ui-suffix {
+  -fx-background-color: #dddddd;
+  -fx-border-color: grey;
+  -fx-padding: 4;
+  -fx-border-radius: 0 5 5 0;
+  -fx-background-radius: 0 5 5 0;
+}
+.ui-prefix {
+  -fx-background-color: #dddddd;
+  -fx-border-color: grey;
+  -fx-padding: 4;
+  -fx-border-radius: 5 0 0 5;
+  -fx-background-radius: 5 0 0 5;
+}
+.ui-prefix+.ui-input {
+  -fx-border-radius: 0 5 5 0;
+  -fx-background-radius: 0 5 5 0;
+  -fx-background-color: red;
 }
 .ui-media-controls {
   -fx-spacing: 0.5em;

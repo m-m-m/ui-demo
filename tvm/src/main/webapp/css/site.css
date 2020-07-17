@@ -50,6 +50,26 @@ button[role=menuitem] {
 input, textarea, select, button {
   border-radius: var(--radius);
 }
+[readonly] {
+  background: none repeat scroll 0 0 transparent;
+  border: medium none !important;
+  color: #000000;
+}
+.ui-prefix {
+  background: var(--col-info);
+  border-color: var(--col-border);
+  padding: 4px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+.ui-suffix {
+  background: var(--col-info);
+  border-color: var(--col-border);
+  padding: 4px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ui-prefix+input {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
 ui-icon {
   font-family: 'FontAwesome';
   font-weight: 900;
@@ -168,13 +188,53 @@ ui-content>aside {
 ui-content>main {
   width: 91.5%;
 }
+table.ui-data {
+  width: 100%;
+  border-spacing: 0;
+  border: 2px solid black;
+}
+table.ui-data thead, table.ui-data tbody {
+  display: block;
+}
+
+table.ui-data thead tr {
+  width: 97%;
+  width: -webkit-calc(100% - 16px);
+  width:    -moz-calc(100% - 16px);
+  width:         calc(100% - 16px);
+}
+table.ui-data tr:after {
+  content: ' ';
+  display: block;
+  visibility: hidden;
+  clear: both;
+}
+table.ui-data tbody {
+  height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+table.ui-data tbody td,
+table.ui-data thead th {
+  width: 19%;
+  float: left;
+  border-right: 1px solid black;
+}
+thead tr th { 
+  height: 30px;
+  line-height: 30px;
+}
 tbody {
   counter-reset: rowNumber;
+  border-top: 2px solid black;
 }
 tbody tr {
   counter-increment: rowNumber;
 }
-tbody>tr>td.rownum::before {
+tbody td:last-child, thead th:last-child {
+  border-right: none !important;
+}
+tbody td.rownum::before {
   content: counter(rowNumber, decimal-leading-zero);
   min-width: 1em;
   margin-right: 0.5em;
