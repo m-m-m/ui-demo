@@ -58,17 +58,22 @@ input, textarea, select, button {
 .ui-prefix {
   background: var(--col-info);
   border-color: var(--col-border);
-  padding: 4px;
+  padding: 4px 4px 4px 8px;
   border-radius: var(--radius) 0 0 var(--radius);
 }
 .ui-suffix {
   background: var(--col-info);
   border-color: var(--col-border);
-  padding: 4px;
+  padding: 4px 8px 4px 4px;
   border-radius: 0 var(--radius) var(--radius) 0;
 }
-.ui-prefix+input {
-  border-radius: 0 var(--radius) var(--radius) 0;
+.with-prefix {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.with-suffix {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 ui-icon {
   font-family: 'FontAwesome';

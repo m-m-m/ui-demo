@@ -50,10 +50,17 @@
   -fx-border-radius: 5 0 0 5;
   -fx-background-radius: 5 0 0 5;
 }
-.ui-prefix+.ui-input {
+.with-prefix {
   -fx-border-radius: 0 5 5 0;
   -fx-background-radius: 0 5 5 0;
-  -fx-background-color: red;
+}
+.with-suffix {
+  -fx-border-radius: 5 0 0 5;
+  -fx-background-radius: 5 0 0 5;
+}
+.with-prefix.with-suffix {
+  -fx-border-radius: 0;
+  -fx-background-radius: 0;
 }
 .ui-media-controls {
   -fx-spacing: 0.5em;
