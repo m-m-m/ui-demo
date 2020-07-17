@@ -14,6 +14,7 @@ import io.github.mmm.ui.api.widget.number.UiDoubleInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerSlider;
 import io.github.mmm.ui.demo.shared.Fruit;
+import io.github.mmm.ui.demo.shared.place.content.widget.data.DataTableController;
 import io.github.mmm.validation.main.ValidatorRange;
 
 /**
@@ -34,6 +35,7 @@ public class InputsView extends UiCustomFormPanel<Void> {
     basic.addChild(UiComboBox.ofEnum("ComboBox", Fruit.class));
     basic.addChild(UiRadioChoice.ofEnum("RadioChoice", Fruit.class));
     this.delegate.addChild(basic);
+
     UiFormGroup<Void> numeric = UiFormGroup.of("Numeric Inputs");
     UiIntegerInput integerInput = UiIntegerInput.of("IntegerInput");
     numeric.addChild(integerInput);
@@ -46,6 +48,19 @@ public class InputsView extends UiCustomFormPanel<Void> {
     doubleInput.setValidator(validatorDouble);
     numeric.addChild(doubleInput);
     this.delegate.addChild(numeric);
+
+    UiFormGroup<Void> prefixSuffix = UiFormGroup.of("Prefix/Suffix");
+    UiDoubleInput prefixInput = UiDoubleInput.of("Prefix");
+    prefixInput.setPrefix("$");
+    prefixSuffix.addChild(prefixInput);
+    UiDoubleInput suffixInput = UiDoubleInput.of("Suffix");
+    suffixInput.setSuffix("m/s");
+    prefixSuffix.addChild(suffixInput);
+    UiIntegerInput prefixSuffixInput = UiIntegerInput.of("Phone");
+    prefixSuffixInput.setPrefix("+49");
+    prefixSuffixInput.setSuffix("work");
+    prefixSuffix.addChild(prefixSuffixInput);
+    this.delegate.addChild(prefixSuffix);
   }
 
 }
