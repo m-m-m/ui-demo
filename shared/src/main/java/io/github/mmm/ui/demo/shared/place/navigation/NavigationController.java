@@ -3,8 +3,8 @@
 package io.github.mmm.ui.demo.shared.place.navigation;
 
 import io.github.mmm.ui.api.controller.action.UiActionNavigate;
-import io.github.mmm.ui.api.widget.menu.UiMenu;
-import io.github.mmm.ui.api.widget.menu.UiNavigationBar;
+import io.github.mmm.ui.api.widget.navigation.UiMenu;
+import io.github.mmm.ui.api.widget.navigation.UiNavigationBar;
 import io.github.mmm.ui.demo.shared.place.content.chart.BarChartController;
 import io.github.mmm.ui.demo.shared.place.content.chart.LineChartController;
 import io.github.mmm.ui.demo.shared.place.content.chart.PieChartController;
