@@ -23,7 +23,7 @@ public class ValidationForm extends UiCustomFormPanel<Void> {
 
     super();
     UiTextInput name = UiTextInput.of("Name");
-    name.setValidator(ValidatorMandatory.getInstance());
+    name.setValidator(ValidatorMandatory.get());
     name.setTooltip(
         "This field is mandatory. The label should be highlighted to indicate this. This value must be filled in order to be valid.");
     addChild(name);
