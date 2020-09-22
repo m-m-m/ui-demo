@@ -7,7 +7,6 @@ import java.util.List;
 
 import io.github.mmm.ui.api.widget.data.UiDataTable;
 import io.github.mmm.ui.api.widget.panel.UiCustomVerticalPanel;
-import io.github.mmm.ui.demo.shared.TestBean;
 
 /**
  * View of {@link DataTableController}.

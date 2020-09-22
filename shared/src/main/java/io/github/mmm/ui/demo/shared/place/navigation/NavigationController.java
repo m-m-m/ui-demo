@@ -5,6 +5,7 @@ package io.github.mmm.ui.demo.shared.place.navigation;
 import io.github.mmm.ui.api.controller.action.UiActionNavigate;
 import io.github.mmm.ui.api.widget.menu.UiMenu;
 import io.github.mmm.ui.api.widget.menu.UiNavigationBar;
+import io.github.mmm.ui.demo.shared.place.content.binding.editor.BindingEditorController;
 import io.github.mmm.ui.demo.shared.place.content.chart.BarChartController;
 import io.github.mmm.ui.demo.shared.place.content.chart.LineChartController;
 import io.github.mmm.ui.demo.shared.place.content.chart.PieChartController;
@@ -37,6 +38,7 @@ public class NavigationController extends AbstractUiControllerNavigation<UiNavig
     addBasicWidgets(view);
     addDataWidgets(view);
     addForms(view);
+    addBinding(view);
     addLayouts(view);
     addCharts(view);
     return view;
@@ -61,6 +63,12 @@ public class NavigationController extends AbstractUiControllerNavigation<UiNavig
 
     UiMenu menu = view.addMenu("Forms");
     menu.addItem(UiActionNavigate.ofId(ValidationController.ID));
+  }
+
+  private void addBinding(UiNavigationBar view) {
+
+    UiMenu menu = view.addMenu("Binding");
+    menu.addItem(UiActionNavigate.ofId(BindingEditorController.ID));
   }
 
   private void addBasicWidgets(UiNavigationBar view) {

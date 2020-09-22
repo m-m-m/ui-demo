@@ -1,4 +1,5 @@
 io.github.mmm.ui.demo.shared.place.content.ContentController
+io.github.mmm.ui.demo.shared.place.content.binding.editor.BindingEditorController
 io.github.mmm.ui.demo.shared.place.content.chart.BarChartController
 io.github.mmm.ui.demo.shared.place.content.chart.LineChartController
 io.github.mmm.ui.demo.shared.place.content.chart.PieChartController

@@ -1,6 +1,6 @@
 /* Copyright (c) The m-m-m Team, Licensed under the Apache License, Version 2.0
  * http://www.apache.org/licenses/LICENSE-2.0 */
-package io.github.mmm.ui.demo.shared;
+package io.github.mmm.ui.demo.shared.place.content.binding.editor;
 
 import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
@@ -11,11 +11,14 @@ import io.github.mmm.property.string.StringProperty;
 /**
  * A {@link Bean} for testing.
  */
-@Name("mmm.TestBean")
-public class TestBean extends Bean {
+@Name("mmm.Person")
+public class Person extends Bean {
 
   /** Full name of person. */
-  public final StringProperty Name;
+  public final StringProperty FirstName;
+
+  /** Full name of person. */
+  public final StringProperty LastName;
 
   /** Age of person. */
   public final IntegerProperty Age;
@@ -23,9 +26,9 @@ public class TestBean extends Bean {
   /**
    * The constructor.
    */
-  public TestBean() {
+  public Person() {
 
-    this(null, false);
+    this(null, true);
   }
 
   /**
@@ -33,7 +36,7 @@ public class TestBean extends Bean {
    *
    * @param dynamic the {@link #isDynamic() dynamic flag}.
    */
-  public TestBean(boolean dynamic) {
+  public Person(boolean dynamic) {
 
     this(null, dynamic);
   }
@@ -45,17 +48,18 @@ public class TestBean extends Bean {
    *        create a regular mutable {@link Bean}.
    * @param dynamic the {@link #isDynamic() dynamic flag}.
    */
-  public TestBean(AbstractBean writable, boolean dynamic) {
+  public Person(AbstractBean writable, boolean dynamic) {
 
     super(writable, dynamic);
-    this.Name = add().newString().withValidator().mandatory().and().build("Name");
+    this.FirstName = add().newString().withValidator().mandatory().and().build("FirstName");
+    this.LastName = add().newString().withValidator().mandatory().and().build("LastName");
     this.Age = add().newInteger("Age");
   }
 
   @Override
   protected AbstractBean create(AbstractBean writable, boolean dynamic) {
 
-    return new TestBean(writable, dynamic);
+    return new Person(writable, dynamic);
   }
 
 }

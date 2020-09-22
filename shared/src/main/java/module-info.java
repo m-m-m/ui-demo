@@ -15,8 +15,11 @@ module io.github.mmm.ui.demo.shared {
 
   requires transitive io.github.mmm.ui.spi.controller;
 
+  requires transitive io.github.mmm.marshall.json;
+
   provides io.github.mmm.ui.api.controller.UiController with //
       io.github.mmm.ui.demo.shared.place.content.ContentController, //
+      io.github.mmm.ui.demo.shared.place.content.binding.editor.BindingEditorController, //
       io.github.mmm.ui.demo.shared.place.content.chart.BarChartController, //
       io.github.mmm.ui.demo.shared.place.content.chart.LineChartController, //
       io.github.mmm.ui.demo.shared.place.content.chart.PieChartController, //
