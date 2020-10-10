@@ -25,37 +25,15 @@ public class TestBean extends Bean {
    */
   public TestBean() {
 
-    this(null, false);
-  }
-
-  /**
-   * The constructor.
-   *
-   * @param dynamic the {@link #isDynamic() dynamic flag}.
-   */
-  public TestBean(boolean dynamic) {
-
-    this(null, dynamic);
-  }
-
-  /**
-   * The constructor.
-   *
-   * @param writable the writable {@link Bean} to create a {@link #isReadOnly() read-only} view on or {@code null} to
-   *        create a regular mutable {@link Bean}.
-   * @param dynamic the {@link #isDynamic() dynamic flag}.
-   */
-  public TestBean(AbstractBean writable, boolean dynamic) {
-
-    super(writable, dynamic);
+    super();
     this.Name = add().newString().withValidator().mandatory().and().build("Name");
     this.Age = add().newInteger("Age");
   }
 
   @Override
-  protected AbstractBean create(AbstractBean writable, boolean dynamic) {
+  protected AbstractBean create() {
 
-    return new TestBean(writable, dynamic);
+    return new TestBean();
   }
 
 }
