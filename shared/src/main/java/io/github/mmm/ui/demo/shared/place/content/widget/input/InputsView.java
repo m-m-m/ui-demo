@@ -61,6 +61,12 @@ public class InputsView extends UiCustomFormPanel<Void> {
     prefixSuffixInput.setSuffix("work");
     prefixSuffix.addChild(prefixSuffixInput);
     this.delegate.addChild(prefixSuffix);
+
+    UiFormGroup<Void> custom = UiFormGroup.of("Custom");
+    CustomHorizontalInput hInput = new CustomHorizontalInput();
+    hInput.setName("URL");
+    custom.addChild(hInput);
+    this.delegate.addChild(custom);
   }
 
 }

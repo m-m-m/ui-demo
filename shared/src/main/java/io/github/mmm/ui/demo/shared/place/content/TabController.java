@@ -10,9 +10,9 @@ import io.github.mmm.ui.spi.controller.AbstractUiController;
 /**
  * {@link AbstractUiController Controller} for content dialogs.
  *
- * @param <W> type of the {@link #getView() view}.
+ * @param <V> type of the {@link #getView() view}.
  */
-public abstract class TabController<W extends UiRegularWidget> extends AbstractUiController<W> {
+public abstract class TabController<V extends UiRegularWidget> extends AbstractUiController<V> {
 
   /**
    * The constructor.
