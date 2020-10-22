@@ -27,13 +27,13 @@
 .ui-button {
   -fx-min-width: 10em;
 }
-.ui-input {
+.ui-inputcontainer {
    -fx-padding: 0 0 0.5em 0;
 }
-.ui-form > .ui-input {
+.ui-form > .ui-inputcontainer {
    -fx-padding: 0.25em 1em 0.25em 1em;
 }
-.ui-input .slider {
+.ui-inputcontainer .slider {
   -fx-padding: 0 1em 0 1em;
 }
 .ui-suffix {
