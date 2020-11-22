@@ -63,6 +63,13 @@ public class PageController extends AbstractUiControllerPage {
       UiNavigationManager.get().navigateForward();
     });
     fileMenu.addSeparator();
+    UiMenu submenu = fileMenu.addMenu("Submenu");
+    submenu.addItem("Sub-Item1", e -> {
+      System.out.println("Selected Sub-Item1");
+    });
+    submenu.addItem("Sub-Item2", e -> {
+      System.out.println("Selected Sub-Item2");
+    });
     fileMenu.addItem("Exit", e -> {
       UiMainWindow.get().setVisible(false);
     });

@@ -4,8 +4,8 @@
 :root {
   --col-bg: #000000;
   --col-text: #FFFFFF;
-  --col-focus: #2080FF80;
-  --col-hover: #2080FF80;
+  --col-focus: #2080FF;
+  --col-hover: #2080FF;
   --col-invalid: #FF0000;
   --col-error: #FF0000;
   --col-warning: #A0A000;
