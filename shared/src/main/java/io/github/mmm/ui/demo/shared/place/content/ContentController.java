@@ -50,15 +50,10 @@ public class ContentController extends AbstractUiControllerContent<UiTabPanel> {
         tabPanel.setActiveChildIndex(0);
       }
     } else {
-      UiTab tab = null;
-      for (int i = tabPanel.getChildCount() - 1; i > 0; i--) {
-        UiTab existingTab = tabPanel.getChild(i);
-        if (slotId.equals(existingTab.getId())) {
-          tab = existingTab;
-          tab.setChild(child);
-        }
-      }
-      if (tab == null) {
+      UiTab tab = tabPanel.getChildById(slotId);
+      if (tab != null) {
+        tab.setChild(child);
+      } else {
         String text = UiLocalizer.get().localize(slotId);
         tab = tabPanel.addTab(text, child);
         tab.setId(slotId);
