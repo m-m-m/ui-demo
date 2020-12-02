@@ -41,8 +41,16 @@ button[role=menuitem], input[role=menuitem] {
   text-align: left;
   padding-left: 1em;
 }
+ui-submenus button::after {
+  font-family: 'FontAwesome';
+  font-weight: 900;
+  content: "  ";
+}
+ui-menu {
+  background: var(--col-button);
+}
 ui-submenus button[aria-haspopup=true]::after {
-  content: " >";
+  content: " \f0da";
 }
 ui-menu {
   display: flex;
@@ -55,7 +63,7 @@ ui-menu button {
 }
 ui-menu hr {
   width: 100%;
-  margin: 0;
+  margin: 0.5em 0 0.5em 0;
 }
 :focus {
   outline: none;
@@ -153,9 +161,9 @@ ui-radio {
   margin-right: 0.5em;
 }
 ui-radio>input[type=radio] {
-    vertical-align: middle;
-    margin-top: -0.4em;
-    margin-right: 0.2em;
+  vertical-align: middle;
+  margin-top: -0.4em;
+  margin-right: 0.2em;
 }
 fieldset.collapsible>legend,
 fieldset.collapsible>legend>* {
