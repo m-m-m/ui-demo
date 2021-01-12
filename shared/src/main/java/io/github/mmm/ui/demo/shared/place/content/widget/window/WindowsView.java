@@ -2,15 +2,15 @@
  * http://www.apache.org/licenses/LICENSE-2.0 */
 package io.github.mmm.ui.demo.shared.place.content.widget.window;
 
-import io.github.mmm.ui.api.datatype.UiSeverity;
 import io.github.mmm.ui.api.event.action.UiActionClose;
-import io.github.mmm.ui.api.notifier.UiNotifier;
+import io.github.mmm.ui.api.notify.UiNotification;
 import io.github.mmm.ui.api.widget.UiText;
 import io.github.mmm.ui.api.widget.button.UiButton;
 import io.github.mmm.ui.api.widget.panel.UiButtonPanel;
 import io.github.mmm.ui.api.widget.panel.UiCustomVerticalPanel;
 import io.github.mmm.ui.api.widget.window.UiPopup;
 import io.github.mmm.ui.api.widget.window.UiWindow;
+import io.github.mmm.ui.api.window.notiy.UiPopupNotifier;
 
 /**
  * View of {@link WindowsController}.
@@ -43,7 +43,8 @@ public class WindowsView extends UiCustomVerticalPanel {
     }));
     this.delegate.addChild(UiButton.of("Open Popup", (e) -> {
       if (this.popup == null) {
-        this.popup = UiNotifier.get().showPopupOk("This is a test\n<br><blink>blink</blink>", UiSeverity.INFORMATION);
+        this.popup = UiPopupNotifier.get()
+            .createPopupOk(UiNotification.ofInfo("This is a test\n<br><blink>blink</blink>"));
         this.popup.getSize().setWidthInPixel(200);
         this.popup.getSize().setHeightInPixel(200);
       } else {
