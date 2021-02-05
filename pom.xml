@@ -5,7 +5,7 @@
   <parent>
     <groupId>io.github.m-m-m</groupId>
     <artifactId>mmm</artifactId>
-    <version>10</version>
+    <version>12</version>
     <relativePath>../parent/pom.xml</relativePath>
   </parent>
 
@@ -14,11 +14,7 @@
   <packaging>pom</packaging>
 
   <properties>
-    <revision>1.0.0</revision>
-    <changelist>-SNAPSHOT</changelist>
     <mmm.repository>demo-ui</mmm.repository>
-    <teavm.version>0.7.0-dev-1090</teavm.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
   <modules>
@@ -46,56 +42,18 @@
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-bean</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
         <artifactId>mmm-ui-fx-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.2.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>${project.groupId}</groupId>
         <artifactId>mmm-ui-tvm-parent</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.2.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>org.teavm</groupId>
-        <artifactId>teavm-classlib</artifactId>
-        <version>${teavm.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.teavm</groupId>
-        <artifactId>teavm-jso-apis</artifactId>
-        <version>${teavm.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.teavm</groupId>
-        <artifactId>teavm-extras-slf4j</artifactId>
-        <version>${teavm.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>3.1.0</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <repositories>
-    <repository>
-      <id>teavm-dev</id>
-      <url>https://dl.bintray.com/konsoletyper/teavm</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>teavm-dev</id>
-      <url>https://dl.bintray.com/konsoletyper/teavm</url>
-    </pluginRepository>
-  </pluginRepositories>
 </project>

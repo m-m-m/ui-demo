@@ -32,7 +32,7 @@
       <artifactId>teavm-jso-apis</artifactId>
       <scope>provided</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>org.teavm</groupId>
       <artifactId>teavm-extras-slf4j</artifactId>
@@ -75,7 +75,7 @@
       <plugin>
         <groupId>org.teavm</groupId>
         <artifactId>teavm-maven-plugin</artifactId>
-        <version>${teavm.version}</version>
+        <version>0.7.0-SNAPSHOT</version>
         <executions>
           <execution>
             <id>web-client</id>
@@ -99,10 +99,10 @@
 
   <profiles>
     <profile>
-      <id>tvm-dev</id>
+      <id>dev</id>
       <activation>
         <property>
-          <name>tvmDev</name>
+          <name>dev</name>
         </property>
       </activation>
       <properties>

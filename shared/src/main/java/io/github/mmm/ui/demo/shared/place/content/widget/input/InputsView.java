@@ -13,6 +13,9 @@ import io.github.mmm.ui.api.widget.input.UiTextInput;
 import io.github.mmm.ui.api.widget.number.UiDoubleInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerSlider;
+import io.github.mmm.ui.api.widget.temporal.UiDateInput;
+import io.github.mmm.ui.api.widget.temporal.UiDateTimeInput;
+import io.github.mmm.ui.api.widget.temporal.UiTimeInput;
 import io.github.mmm.ui.demo.shared.Fruit;
 import io.github.mmm.ui.demo.shared.place.content.widget.data.DataTableController;
 import io.github.mmm.validation.main.ValidatorRange;
@@ -36,18 +39,9 @@ public class InputsView extends UiCustomFormPanel<Void> {
     basic.addChild(UiRadioChoice.ofEnum("RadioChoice", Fruit.class));
     this.delegate.addChild(basic);
 
-    UiFormGroup<Void> numeric = UiFormGroup.of("Numeric Inputs");
-    UiIntegerInput integerInput = UiIntegerInput.of("IntegerInput");
-    numeric.addChild(integerInput);
-    UiIntegerSlider integerSlider = UiIntegerSlider.of("IntegerSlider");
-    integerSlider.getRange().setMin(-10);
-    integerSlider.getRange().setMax(10);
-    numeric.addChild(integerSlider);
-    UiDoubleInput doubleInput = UiDoubleInput.of("DoubleInput");
-    ValidatorRange<Double> validatorDouble = new ValidatorRange<>(new RangeType<>(-1.0, 1.0));
-    doubleInput.setValidator(validatorDouble);
-    numeric.addChild(doubleInput);
-    this.delegate.addChild(numeric);
+    addNumericInputs();
+
+    addTemporalInputs();
 
     UiFormGroup<Void> prefixSuffix = UiFormGroup.of("Prefix/Suffix");
     UiDoubleInput prefixInput = UiDoubleInput.of("Prefix");
@@ -67,6 +61,34 @@ public class InputsView extends UiCustomFormPanel<Void> {
     hInput.setName("URL");
     custom.addChild(hInput);
     this.delegate.addChild(custom);
+  }
+
+  private void addNumericInputs() {
+
+    UiFormGroup<Void> numeric = UiFormGroup.of("Numeric Inputs");
+    UiIntegerInput integerInput = UiIntegerInput.of("IntegerInput");
+    numeric.addChild(integerInput);
+    UiIntegerSlider integerSlider = UiIntegerSlider.of("IntegerSlider");
+    integerSlider.getRange().setMin(-10);
+    integerSlider.getRange().setMax(10);
+    numeric.addChild(integerSlider);
+    UiDoubleInput doubleInput = UiDoubleInput.of("DoubleInput");
+    ValidatorRange<Double> validatorDouble = new ValidatorRange<>(new RangeType<>(-1.0, 1.0));
+    doubleInput.setValidator(validatorDouble);
+    numeric.addChild(doubleInput);
+    this.delegate.addChild(numeric);
+  }
+
+  private void addTemporalInputs() {
+
+    UiFormGroup<Void> temporal = UiFormGroup.of("Temporal Inputs");
+    UiDateInput dateInput = UiDateInput.of("DateInput");
+    temporal.addChild(dateInput);
+    UiTimeInput timeInput = UiTimeInput.of("TimeInput");
+    temporal.addChild(timeInput);
+    UiDateTimeInput dateTimeInput = UiDateTimeInput.of("DateTimeInput");
+    temporal.addChild(dateTimeInput);
+    this.delegate.addChild(temporal);
   }
 
 }

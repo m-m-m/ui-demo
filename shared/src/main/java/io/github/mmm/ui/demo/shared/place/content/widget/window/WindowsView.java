@@ -47,9 +47,8 @@ public class WindowsView extends UiCustomVerticalPanel {
             .createPopupOk(UiNotification.ofInfo("This is a test\n<br><blink>blink</blink>"));
         this.popup.getSize().setWidthInPixel(200);
         this.popup.getSize().setHeightInPixel(200);
-      } else {
-        this.popup.open();
       }
+      this.popup.open();
     }));
   }
 

@@ -147,6 +147,9 @@ ui-hpanel {
   display: flex;
   flex-direction: row;
 }
+ui-scrollpanel {
+  display: block;
+}
 ui-buttons {
   padding-top: 5px;
   display: flex;
