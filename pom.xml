@@ -56,4 +56,16 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>teavm-dev</id>
+      <url>https://dl.bintray.com/konsoletyper/teavm</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>teavm-dev</id>
+      <url>https://dl.bintray.com/konsoletyper/teavm</url>
+    </pluginRepository>
+  </pluginRepositories>
 </project>
