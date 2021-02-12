@@ -5,8 +5,12 @@ body {
   font-family: var(--font);
   background: var(--col-bg);
 }
-:not(input):not(textarea):not(select) {
-  color: var(--col-text);
+a {
+  color: var(--col-link);
+  cursor: pointer;
+}
+a:hover {
+  color: var(--col-hover);
 }
 button,
 input,
