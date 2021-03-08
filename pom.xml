@@ -27,6 +27,21 @@
     <dependencies>
       <dependency>
         <groupId>${project.groupId}</groupId>
+        <artifactId>mmm-ui-fx-parent</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>${project.groupId}</groupId>
+        <artifactId>mmm-ui-tvm-parent</artifactId>
+        <version>${project.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- own modules -->
+      <dependency>
+        <groupId>${project.groupId}</groupId>
         <artifactId>mmm-ui-demo-shared</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -39,20 +54,6 @@
         <groupId>${project.groupId}</groupId>
         <artifactId>mmm-ui-demo-tvm</artifactId>
         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-ui-fx-parent</artifactId>
-        <version>0.2.0-SNAPSHOT</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>${project.groupId}</groupId>
-        <artifactId>mmm-ui-tvm-parent</artifactId>
-        <version>0.2.0-SNAPSHOT</version>
-        <type>pom</type>
-        <scope>import</scope>
       </dependency>
     </dependencies>
   </dependencyManagement>
