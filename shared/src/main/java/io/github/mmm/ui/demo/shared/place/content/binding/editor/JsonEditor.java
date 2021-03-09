@@ -5,7 +5,7 @@ package io.github.mmm.ui.demo.shared.place.content.binding.editor;
 import java.util.function.Consumer;
 
 import io.github.mmm.marshall.JsonFormat;
-import io.github.mmm.marshall.StructuredFormat;
+import io.github.mmm.marshall.StructuredTextFormat;
 import io.github.mmm.ui.api.attribute.AttributeWriteValue;
 import io.github.mmm.ui.api.event.action.UiActionReset;
 import io.github.mmm.ui.api.widget.button.UiButton;
@@ -27,7 +27,7 @@ public class JsonEditor extends UiCustomVerticalPanel implements AttributeWriteV
       + "  \"Country\": \"USA\"\n" //
       + "}";
 
-  private final StructuredFormat jsonFormat;
+  private final StructuredTextFormat jsonFormat;
 
   private final UiTextArea jsonTextArea;
 
