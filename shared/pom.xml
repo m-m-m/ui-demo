@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.github.m-m-m</groupId>
     <artifactId>mmm-ui-demo</artifactId>
-    <version>${revision}${changelist}</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>mmm-ui-demo-shared</artifactId>
