@@ -217,6 +217,7 @@ ui-tabpanel>ui-tabcontent {
 }
 ui-content {
   white-space: nowrap;
+  display: table;
 }
 ui-content>* {
   display: inline-block;
@@ -225,9 +226,11 @@ ui-content>* {
 }
 ui-content>aside {
   margin-right: 1em;
+  display: table-cell;
 }
 ui-content>main {
-  width: 89.0%;
+  display: table-cell;
+  width: 100%;
 }
 table.ui-data {
   width: 100%;
