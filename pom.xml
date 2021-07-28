@@ -61,13 +61,13 @@
   <repositories>
     <repository>
       <id>teavm-dev</id>
-      <url>https://dl.bintray.com/konsoletyper/teavm</url>
+      <url>https://teavm.org/maven/repository</url>
     </repository>
   </repositories>
   <pluginRepositories>
     <pluginRepository>
       <id>teavm-dev</id>
-      <url>https://dl.bintray.com/konsoletyper/teavm</url>
+      <url>https://teavm.org/maven/repository</url>
     </pluginRepository>
   </pluginRepositories>
 </project>
