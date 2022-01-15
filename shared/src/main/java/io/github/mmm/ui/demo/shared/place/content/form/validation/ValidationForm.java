@@ -8,7 +8,7 @@ import io.github.mmm.ui.api.widget.input.UiTextInput;
 import io.github.mmm.ui.api.widget.number.UiIntegerInput;
 import io.github.mmm.validation.Validator;
 import io.github.mmm.validation.main.ValidatorMandatory;
-import io.github.mmm.validation.main.ValidatorRange;
+import io.github.mmm.validation.range.ValidatorRange;
 import io.github.mmm.validation.string.ValidatorBuilderString;
 
 /**

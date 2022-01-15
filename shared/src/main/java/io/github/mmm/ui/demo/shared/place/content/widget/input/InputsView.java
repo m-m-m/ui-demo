@@ -18,7 +18,7 @@ import io.github.mmm.ui.api.widget.temporal.UiDateTimeInput;
 import io.github.mmm.ui.api.widget.temporal.UiTimeInput;
 import io.github.mmm.ui.demo.shared.Fruit;
 import io.github.mmm.ui.demo.shared.place.content.widget.data.DataTableController;
-import io.github.mmm.validation.main.ValidatorRange;
+import io.github.mmm.validation.range.ValidatorRange;
 
 /**
  * View of {@link DataTableController}.
@@ -73,7 +73,7 @@ public class InputsView extends UiCustomFormPanel<Void> {
     integerSlider.getRange().setMax(10);
     numeric.addChild(integerSlider);
     UiDoubleInput doubleInput = UiDoubleInput.of("DoubleInput");
-    ValidatorRange<Double> validatorDouble = new ValidatorRange<>(new RangeType<>(-1.0, 1.0));
+    ValidatorRange<Double> validatorDouble = new ValidatorRange<>(RangeType.of(-1.0, 1.0));
     doubleInput.setValidator(validatorDouble);
     numeric.addChild(doubleInput);
     this.delegate.addChild(numeric);
