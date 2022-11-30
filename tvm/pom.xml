@@ -75,7 +75,7 @@
       <plugin>
         <groupId>org.teavm</groupId>
         <artifactId>teavm-maven-plugin</artifactId>
-        <version>0.7.0-dev-1196</version>
+        <version>0.7.0-dev-1209</version>
         <executions>
           <execution>
             <id>web-client</id>
