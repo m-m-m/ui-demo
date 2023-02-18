@@ -5,14 +5,14 @@ package io.github.mmm.ui.demo.shared.place.content.binding.editor;
 import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
 import io.github.mmm.bean.DynamicBean;
-import io.github.mmm.bean.Name;
+import io.github.mmm.bean.BeanName;
 import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 
 /**
  * A {@link Bean} for testing.
  */
-@Name("mmm.Person")
+@BeanName("mmm.Person")
 public class Person extends DynamicBean {
 
   /** Full name of person. */

@@ -4,14 +4,14 @@ package io.github.mmm.ui.demo.shared.place.content.widget.data;
 
 import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
-import io.github.mmm.bean.Name;
+import io.github.mmm.bean.BeanName;
 import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 
 /**
  * A {@link Bean} for testing.
  */
-@Name("mmm.TestBean")
+@BeanName("mmm.TestBean")
 public class TestBean extends Bean {
 
   /** Full name of person. */
