@@ -4,7 +4,7 @@ package io.github.mmm.ui.demo.shared.place.content.binding.editor;
 
 import java.util.function.Consumer;
 
-import io.github.mmm.marshall.JsonFormat;
+import io.github.mmm.marshall.StandardFormat;
 import io.github.mmm.marshall.StructuredTextFormat;
 import io.github.mmm.ui.api.attribute.AttributeWriteValue;
 import io.github.mmm.ui.api.event.action.UiActionReset;
@@ -39,7 +39,7 @@ public class JsonEditor extends UiCustomVerticalPanel implements AttributeWriteV
   public JsonEditor(Consumer<Person> consumer) {
 
     super();
-    this.jsonFormat = JsonFormat.of();
+    this.jsonFormat = StandardFormat.json();
     UiFormPanel<Void> form = UiFormPanel.of();
     this.jsonTextArea = UiTextArea.of("JSON");
     this.jsonTextArea.setValue(JSON_DEFAULT);
