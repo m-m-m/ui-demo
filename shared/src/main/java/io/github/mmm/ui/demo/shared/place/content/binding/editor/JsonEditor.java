@@ -23,6 +23,7 @@ public class JsonEditor extends UiCustomVerticalPanel implements AttributeWriteV
       + "  \"FirstName\": \"John\",\n" //
       + "  \"LastName\": \"Doe\",\n" //
       + "  \"Age\": 42,\n" //
+      + "  \"Married\": false,\n" //
       + "  \"City\": \"New York\",\n" //
       + "  \"Country\": \"USA\"\n" //
       + "}";

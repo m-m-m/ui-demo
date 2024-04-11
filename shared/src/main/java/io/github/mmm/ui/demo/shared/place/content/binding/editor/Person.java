@@ -4,9 +4,8 @@ package io.github.mmm.ui.demo.shared.place.content.binding.editor;
 
 import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
-import io.github.mmm.bean.DynamicBean;
 import io.github.mmm.bean.BeanName;
-import io.github.mmm.property.number.integers.IntegerProperty;
+import io.github.mmm.bean.DynamicBean;
 import io.github.mmm.property.string.StringProperty;
 
 /**
@@ -21,9 +20,6 @@ public class Person extends DynamicBean {
   /** Full name of person. */
   public final StringProperty LastName;
 
-  /** Age of person. */
-  public final IntegerProperty Age;
-
   /**
    * The constructor.
    */
@@ -32,7 +28,6 @@ public class Person extends DynamicBean {
     super();
     this.FirstName = add().newString().withValidator().mandatory().and().build("FirstName");
     this.LastName = add().newString().withValidator().mandatory().and().build("LastName");
-    this.Age = add().newInteger("Age");
   }
 
   @Override

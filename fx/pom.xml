@@ -19,5 +19,10 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>mmm-ui-fx-all</artifactId>
     </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
+    </dependency>
   </dependencies>
 </project>

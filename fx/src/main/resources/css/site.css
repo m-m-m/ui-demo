@@ -50,6 +50,9 @@
   -fx-border-radius: 5 0 0 5;
   -fx-background-radius: 5 0 0 5;
 }
+.spinner.ui-input .text-field {
+  -fx-padding: 5;
+}
 .with-prefix {
   -fx-border-radius: 0 5 5 0;
   -fx-background-radius: 0 5 5 0;
