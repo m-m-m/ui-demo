@@ -6,6 +6,7 @@ import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
 import io.github.mmm.bean.BeanName;
 import io.github.mmm.bean.DynamicBean;
+import io.github.mmm.bean.WritableBean;
 import io.github.mmm.property.string.StringProperty;
 
 /**
@@ -25,15 +26,26 @@ public class Person extends DynamicBean {
    */
   public Person() {
 
-    super();
+    this(null);
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param writable the {@link WritableBean} to wrap as {@link #isReadOnly() read-only} bean or {@code null} to create
+   *        a mutable bean.
+   */
+  public Person(WritableBean writable) {
+
+    super(writable);
     this.FirstName = add().newString().withValidator().mandatory().and().build("FirstName");
     this.LastName = add().newString().withValidator().mandatory().and().build("LastName");
   }
 
   @Override
-  protected AbstractBean create() {
+  protected AbstractBean create(WritableBean writable) {
 
-    return new Person();
+    return new Person(writable);
   }
 
 }

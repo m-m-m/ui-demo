@@ -5,6 +5,7 @@ package io.github.mmm.ui.demo.shared.place.content.widget.data;
 import io.github.mmm.bean.AbstractBean;
 import io.github.mmm.bean.Bean;
 import io.github.mmm.bean.BeanName;
+import io.github.mmm.bean.WritableBean;
 import io.github.mmm.property.number.integers.IntegerProperty;
 import io.github.mmm.property.string.StringProperty;
 
@@ -25,15 +26,26 @@ public class TestBean extends Bean {
    */
   public TestBean() {
 
-    super();
+    this(null);
+  }
+
+  /**
+   * The constructor.
+   *
+   * @param writable the {@link WritableBean} to wrap as {@link #isReadOnly() read-only} bean or {@code null} to create
+   *        a mutable bean.
+   */
+  public TestBean(WritableBean writable) {
+
+    super(writable);
     this.Name = add().newString().withValidator().mandatory().and().build("Name");
     this.Age = add().newInteger("Age");
   }
 
   @Override
-  protected AbstractBean create() {
+  protected AbstractBean create(WritableBean writable) {
 
-    return new TestBean();
+    return new TestBean(writable);
   }
 
 }
