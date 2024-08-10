@@ -17,7 +17,7 @@
     <tvm.debug.information>false</tvm.debug.information>
     <tvm.source.maps>false</tvm.source.maps>
     <tvm.optimization>ADVANCED</tvm.optimization>
-    <teavm.version>0.10.0-dev-7</teavm.version>
+    <teavm.version>0.10.0-dev-12</teavm.version>
   </properties>
 
   <dependencies>
