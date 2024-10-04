@@ -6,9 +6,9 @@ import io.github.mmm.ui.api.widget.form.UiFormPanel;
 import io.github.mmm.ui.api.widget.panel.UiVerticalPanel;
 import io.github.mmm.ui.api.widget.tab.UiTab;
 import io.github.mmm.ui.api.widget.tab.UiTabPanel;
-import io.github.mmm.ui.api.widget.temporal.UiDateInput;
-import io.github.mmm.ui.api.widget.temporal.UiDateTimeInput;
-import io.github.mmm.ui.api.widget.temporal.UiTimeInput;
+import io.github.mmm.ui.api.widget.time.UiDateInput;
+import io.github.mmm.ui.api.widget.time.UiDateTimeInput;
+import io.github.mmm.ui.api.widget.time.UiTimeInput;
 
 /**
  * Demo for temporal widgets. Currently not working on all platforms. For TeaVM see
